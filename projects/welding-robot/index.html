@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>용접로봇행동생성 데이터 — Yuhyun Kim</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a href="../../" class="nav-name">Yuhyun Kim</a>
+      <ul class="nav-links">
+        <li><a href="../../#about">About</a></li>
+        <li><a href="../../#publications">Publications</a></li>
+        <li><a href="../../#projects">Projects</a></li>
+        <li><a href="../../#awards">Awards</a></li>
+        <li><a href="../../#experience">Experience</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="detail-main">
+
+    <a href="../../#projects" class="back-link">← Back to projects</a>
+
+    <header class="detail-header">
+      <div class="detail-meta">
+        <span>2025 — Present</span>
+        <span class="sep">·</span>
+        <span>한국지능정보사회진흥원 (NIA)</span>
+        <span class="sep">·</span>
+        <span>Researcher</span>
+      </div>
+
+      <h1 class="detail-title">용접로봇행동생성 데이터</h1>
+
+      <p class="detail-subtitle">
+        RGB-D multi-view 및 형상 메시(mesh) 데이터를 결합한 멀티모달
+        Vision-Language-Action 모델 개발 — 산업용 용접 로봇의 행동 생성
+        데이터셋 유효성 검증을 목표로 한 응용 연구.
+      </p>
+    </header>
+
+    <!-- ============= OVERVIEW ============= -->
+    <section class="detail-section">
+      <h3>Overview</h3>
+      <p>
+        본 프로젝트는 한국지능정보사회진흥원(NIA) 주관 AI 학습 데이터 구축
+        사업의 일환으로, 용접 작업을 수행하는 로봇 매니퓰레이터의 행동 데이터를
+        RGB-D 다중 시점(multi-view) 영상과 함께 수집하고, 이를 Vision-Language-Action
+        (VLA) 학습에 활용 가능한 형태로 검증·정제하는 연구입니다.
+      </p>
+      <p>
+        기존 robot manipulation 데이터셋이 주로 가정 환경 작업(파지·정렬 등)에
+        집중되어 있는 반면, 산업 환경에서의 정밀 작업(용접) 데이터는 상대적으로
+        희소합니다. 본 연구는 이러한 격차를 메우는 것을 목표로 합니다.
+      </p>
+    </section>
+
+    <!-- ============= APPROACH ============= -->
+    <section class="detail-section">
+      <h3>Approach</h3>
+      <ul>
+        <li>다중 시점(multi-view) RGB-D 카메라 셋업을 통한 용접 작업 데이터 수집 파이프라인 설계</li>
+        <li>3D 형상 메시(mesh) 데이터를 RGB-D 시점 정보와 정합(align)하는 캘리브레이션 절차 정립</li>
+        <li>Vision-Language-Action 모델 학습을 위한 데이터 라벨링 스키마 설계 (action primitive, language instruction)</li>
+        <li>수집된 데이터의 학습 적합성 검증을 위한 베이스라인 VLA 모델 fine-tuning 실험</li>
+      </ul>
+
+      <div class="detail-aside">
+        <span class="aside-label">Role</span>
+        본 프로젝트에서 캘리브레이션 파이프라인 설계와 멀티모달 데이터 정합
+        파트를 담당하였습니다. RGB-LiDAR 캘리브레이션의 사람 의존적 튜닝
+        문제를 해결하기 위한 자동화된 파이프라인을 함께 구축 중입니다.
+      </div>
+    </section>
+
+    <!-- ============= TECH STACK ============= -->
+    <section class="detail-section">
+      <h3>Methods &amp; Tech</h3>
+      <div class="tech-tags">
+        <span class="tag">RGB-D Multi-View</span>
+        <span class="tag">3D Mesh Alignment</span>
+        <span class="tag">Vision-Language-Action</span>
+        <span class="tag">Camera-LiDAR Calibration</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">ROS</span>
+        <span class="tag">Python</span>
+      </div>
+    </section>
+
+    <!-- ============= STATUS ============= -->
+    <section class="detail-section">
+      <h3>Status</h3>
+      <p>
+        2025년 8월 착수, 현재 진행 중. 데이터 수집 파이프라인 1차 검증 완료,
+        VLA 모델 베이스라인 실험 단계.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div><a href="../../">← Yuhyun Kim</a></div>
+    <div>Last updated <span style="color: var(--muted)">May 2026</span></div>
+  </footer>
+
+</body>
+</html>
