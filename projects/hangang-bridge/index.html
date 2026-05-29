@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>한강철교 비전센서 구축 — Yuhyun Kim</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a href="../../" class="nav-name">Yuhyun Kim</a>
+      <ul class="nav-links">
+        <li><a href="../../#about">About</a></li>
+        <li><a href="../../#experience">Experience</a></li>
+        <li><a href="../../#publications">Publications</a></li>
+        <li><a href="../../#projects">Projects</a></li>
+        <li><a href="../../#awards">Awards</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="detail-main">
+
+    <a href="../../#projects" class="back-link">← Back to projects</a>
+
+    <header class="detail-header">
+      <div class="detail-meta">
+        <span>2026</span>
+        <span class="sep">·</span>
+        <!-- TODO: 발주처 확인 필요 (보고서에 미명시) -->
+        <span>발주처 미정</span>
+        <span class="sep">·</span>
+        <span>Researcher</span>
+      </div>
+
+      <h1 class="detail-title">한강철교 비전센서 구축</h1>
+
+      <p class="detail-subtitle">
+        한강철교 레일의 건전성과 이음매 볼트 체결 상태를 상시 점검하기 위한 라이다–카메라 다중센서 기반 비전 검사 시스템 구축 방안.
+      </p>
+    </header>
+
+    <!-- ============= OVERVIEW ============= -->
+    <section class="detail-section">
+      <h3>Overview</h3>
+      <p>철교 레일은 운행 안전과 직결되므로 평면성·직진성 등 선형 건전성과 이음매(체결부) 볼트의 체결 상태를 주기적으로 점검해야 한다. 본 과제는 한강철교를 대상으로, 사람의 육안 점검에 의존하던 레일 점검을 라이다–카메라 다중센서와 영상 감시 센서로 자동화·상시화하기 위한 비전센서 구축 방안을 수립하는 것을 목표로 한다.</p>
+      <p>구축 방안은 (1) 라이다–카메라 다중센서팩을 이용한 레일 건전성(평면성·직진성) 모니터링과, (2) 카메라를 이용한 레일 이음매 볼트 체결 상황 모니터링의 두 축으로 구성되며, 철교 구간에 센서 설치 위치와 수량을 배치하는 계획을 포함한다.</p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;철교 구간 센서 시스템 설치 위치 배치도(50m·400m 구간, 센서 개소·대수)&gt; <span style="opacity:.7">(출처: 한강철교 비전센서 구축 방안_260421_v01.pptx)</span></p>
+    </section>
+
+    <!-- ============= APPROACH ============= -->
+    <section class="detail-section">
+      <h3>Approach</h3>
+      <ul>
+        <li><strong>라이다–카메라 다중센서팩 기반 레일 건전성 모니터링:</strong> 라이다 1대당 약 40~50m 구간을 커버하도록 레일 좌측 또는 우측 상단에 장착하여 레일 평면성·직진성을 평가. 10mm 이내 정확도를 목표로 함.</li>
+        <li><strong>레일 선형성·평면성 평가:</strong> 레일의 선형성(직진성)과 레일 간 평면성(높이의 일관성)을 측정하여 레일 틀림을 정량적으로 판정.</li>
+        <li><strong>카메라 기반 이음매 볼트 체결 모니터링:</strong> 이음매는 레일 1조당 4개가 존재하며, 이음매마다 카메라를 설치해 볼트 체결 상태를 확인하고 볼트 탈락 여부를 감시.</li>
+        <li><strong>센서 배치 계획:</strong> 이음매 검출용 영상 감시 센서 총 9개소·36대, 레일 틀림 검출용 다중 센서 총 8개소·8대로 구성.</li>
+      </ul>
+
+      <div class="detail-aside">
+        <span class="aside-label">Role</span>
+        비전 센서 구축 방안 설계 및 다중센서(라이다–카메라) 배치·검사 방식 검토에 참여.
+      </div>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;라이다–카메라 다중센서팩 설치 위치 및 커버 범위 개념도&gt; <span style="opacity:.7">(출처: 한강철교 비전센서 구축 방안_260421_v01.pptx)</span></p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;레일 이음매 볼트 체결부 카메라 배치(이음매 4개소) 개념도&gt; <span style="opacity:.7">(출처: 한강철교 비전센서 구축 방안_260421_v01.pptx)</span></p>
+    </section>
+
+    <!-- ============= TECH STACK ============= -->
+    <section class="detail-section">
+      <h3>Methods &amp; Tech</h3>
+      <div class="tech-tags">
+        <span class="tag">LiDAR-Camera Fusion</span>
+        <span class="tag">Rail Health Monitoring</span>
+        <span class="tag">다중센서팩</span>
+        <span class="tag">레일 평면성·직진성</span>
+        <span class="tag">이음매 볼트 검출</span>
+        <span class="tag">레일 틀림 검출</span>
+        <span class="tag">Vision Inspection</span>
+      </div>
+    </section>
+
+    <!-- ============= STATUS ============= -->
+    <section class="detail-section">
+      <h3>Status</h3>
+      <p>2026년 4월 비전센서 구축 방안(설계·제안) 수립 단계.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div><a href="../../">← Yuhyun Kim</a></div>
+    <div>Last updated <span style="color: var(--muted)">May 2026</span></div>
+  </footer>
+
+</body>
+</html>

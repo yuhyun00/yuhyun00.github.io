@@ -43,26 +43,39 @@
       <h1 class="detail-title">위성 영상 롱테일 문제 해결을 위한 이미지 검색 기반 능동 학습법</h1>
 
       <p class="detail-subtitle">
-        <!-- TODO: 한 줄 요약 -->
+        초고해상도 위성 영상의 극심한 롱테일(long-tail) 클래스 불균형을 해결하기 위해, 이미지 검색(image retrieval)을 능동적 학습(active learning)에 결합한 데이터 큐레이션 프레임워크를 개발하고 2테라픽셀 규모의 실제 위성 영상으로 실증한 3개년 연구.
       </p>
     </header>
 
     <!-- ============= OVERVIEW ============= -->
     <section class="detail-section">
       <h3>Overview</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>
+        구글어스 등 상업용 위성 영상 플랫폼의 대중화로 딥러닝 기반 위성 영상 분석이 활발히 연구되고 있다. 그러나 위성 영상은 기가픽셀(Gigapixel) 단위의 초대용량 이미지로, 자동차·항공기 같은 관심 객체가 전체 영상에서 차지하는 비중이 극히 작아 수동 판독의 효율이 낮다. 국내는 KARI·한화시스템·쎄트렉아이 등이 위성 시스템을 구축하고 있으나 학습 데이터셋 규모가 부족하고, 특수 목적 위성 영상은 KOMPSAT 기준 한 장당 약 300만 원에 달해 데이터 확보·관리 비용이 매우 높다.
+      </p>
+      <p>
+        특히 현실 데이터는 일부 다수 클래스(head)에 데이터가 집중되고 소수 클래스(tail)는 극소수만 존재하는 롱테일 분포를 가진다. 일반 객체 검출 데이터셋 VOC2012에서 전경 객체가 전체의 약 29.75%를 차지하는 반면, 위성 영상 데이터셋 iSAID에서는 2.85%에 불과할 만큼 위성 도메인에서 불균형이 더욱 극심하다. 본 연구는 데이터 전수 검사, 합성 데이터, 의사 라벨(pseudo-label), 표준 능동 학습 등 기존 접근법이 극단적 롱테일 환경에서 갖는 한계를 극복하기 위해, <strong>희귀 객체 중심의 이미지 검색 기반 능동적 학습법</strong>을 제안하는 것을 목표로 한다.
+      </p>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;기가픽셀 단위 초고해상도 위성 영상과 그 안에서 작게 나타나는 관심 객체 예시&gt; <span style="opacity:.7">(출처: 3년차_중견위성_최종보고서_260319.hwp)</span></p>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;위성 영상 데이터셋의 롱테일 클래스 분포(head/tail) 그래프&gt; <span style="opacity:.7">(출처: 1년차___중견연구_유형1___연차보고서_서식_2024_eRND_.hwp)</span></p>
     </section>
 
     <!-- ============= APPROACH ============= -->
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li style="color: var(--muted)">내용 준비 중입니다.</li>
+        <li><strong>1차년도 — 이미지 검색 기반 샘플링 (분류):</strong> 자가지도학습(self-supervised) 모델 DINOv2를 iNaturalist2017 롱테일 데이터셋에 fine-tune하고, 클래스별 평균 feature map을 쿼리로 cosine similarity 기반 검색을 수행해 원본 대비 10%·20% 서브셋을 구성. 기존 능동 학습 SOTA(PT4AL)와 비교.</li>
+        <li><strong>2차년도 — 객체 검출로 확장:</strong> 검색 기법을 위성 객체 검출 데이터셋 DIOR(20개 클래스, 23,463장)에 적용. 초기 계획의 RarePlanes(실데이터 253장·합성 도메인 갭)에서 실데이터 기반 DIOR로 평가 데이터셋을 변경.</li>
+        <li><strong>CB-PPAL 제안:</strong> 객체 검출용 능동 학습 SOTA인 PPAL을 클래스 균형 관점으로 확장한 CB-PPAL(Class-Balanced Plug and Play Active Learning) 개발. 1단계 CB-DCUS는 검출 난이도와 클래스 빈도의 역수를 결합해 소수 클래스에 높은 가중치를 부여하고, 2단계 CCMS는 카테고리별 매칭 유사도로 다양성을 고려한 샘플을 선택.</li>
+        <li><strong>균형 인자 β 결합:</strong> 최종 클래스 가중치를 <code>w_c = β·w_difficulty + (1−β)·w_frequency</code> 형태로 결합하고, 매 라운드 레이블링된 데이터의 클래스 분포를 추적해 빈도 가중치를 동적으로 재계산.</li>
+        <li><strong>3차년도 — 대규모 실증 데이터 구축:</strong> Google Maps Tile Service API(Web Mercator, 줌 레벨 18, 약 0.6m/pixel)로 아시아·유럽·미국 다지역 위성 영상을 수집하고 800×800으로 리사이즈해 약 300만 장(약 2.3TB) 구축. MTP(Multi-Task Pretraining) 프레임워크로 pseudo-label 자동 생성.</li>
+        <li><strong>DINOv3 기반 데이터 필터링:</strong> DIOR 20개 클래스의 대표 feature prototype을 DINOv3-ConvNeXt Large(1536차원)로 구축하고, 각 객체의 cosine similarity가 임계값 0.90 이상인 경우만 유효 라벨로 인정. 유효 객체를 1개 이상 포함한 이미지만 남겨 최종 79,854장의 고품질 클린셋을 COCO 포맷으로 구성.</li>
+        <li><strong>구조적 검색:</strong> 대규모 데이터에서 전수 검색의 비효율을 줄이기 위해 특징점 공간의 의미론적 인접성을 활용한 클러스터링 기반 구조적 검색을 도입.</li>
       </ul>
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
-        <!-- TODO: 담당 역할 -->
+        연구 수행 및 알고리즘 개발 참여 — 이미지 검색 기반 능동 학습(CB-PPAL) 알고리즘 설계·구현, DINOv2/DINOv3 기반 특징 추출 및 데이터 필터링 파이프라인, 대규모 위성 영상 수집·실증.
       </div>
     </section>
 
@@ -70,14 +83,45 @@
     <section class="detail-section">
       <h3>Methods &amp; Tech</h3>
       <div class="tech-tags">
-        <!-- TODO: 기술 태그 -->
+        <span class="tag">DINOv2</span>
+        <span class="tag">DINOv3-ConvNeXt</span>
+        <span class="tag">Image Retrieval</span>
+        <span class="tag">Active Learning</span>
+        <span class="tag">CB-PPAL</span>
+        <span class="tag">PPAL</span>
+        <span class="tag">PT4AL</span>
+        <span class="tag">RetinaNet</span>
+        <span class="tag">MTP (Multi-Task Pretraining)</span>
+        <span class="tag">Cosine Similarity</span>
+        <span class="tag">Long-tail Learning</span>
+        <span class="tag">DIOR / iNaturalist2017</span>
+        <span class="tag">Google Maps Tile API</span>
       </div>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;이미지 검색 기반 능동적 학습법 전체 파이프라인 구성도&gt; <span style="opacity:.7">(출처: 1년차___중견연구_유형1___연차보고서_서식_2024_eRND_.hwp)</span></p>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;DINOv3-ConvNeXt prototype 기반 pseudo-label 데이터 필터링 파이프라인&gt; <span style="opacity:.7">(출처: 3년차_중견위성_최종보고서_260319.hwp)</span></p>
+    </section>
+
+    <!-- ============= RESULTS ============= -->
+    <section class="detail-section">
+      <h3>Results</h3>
+      <p>
+        <strong>1차년도(분류).</strong> iNaturalist2017에서 검색 기반 서브셋을 ResNet18로 학습한 결과, 10% 샘플링에서 능동 학습 SOTA 대비 전체 카테고리 평균 13.57% 성능 향상을 보였으며, 하위 빈도 카테고리에서 최대 65.75% 향상을 기록했다. 20% 샘플링에서도 평균 13.61% 향상, 하위 10% 카테고리에서 73.7% 향상으로 목표였던 5% 향상을 크게 상회했다. 정성적으로 기존 방법이 head 카테고리에 예측이 집중된 반면 제안 방법은 tail 카테고리까지 정확히 예측했다.
+      </p>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;CB-PPAL 5라운드 능동 학습 후 head/tail 클래스 분포 변화 비교&gt; <span style="opacity:.7">(출처: 2년차_위성_영상의_롱테일_문제를_위한_이미지_검색_기반_능동적_학습법_2025_IRIS_.hwp)</span></p>
+      <p>
+        <strong>2차년도(검출).</strong> DIOR에서 RetinaNet으로 CB-PPAL을 적용해 초기 10%부터 매 라운드 10%씩 5라운드 학습한 결과, head 클래스('ship') 비중이 줄고 tail 클래스 비중이 뚜렷이 증가해 클래스 균형 샘플링 효과를 확인했다.
+      </p>
+      <p>
+        <strong>3차년도(대규모 실증).</strong> 79,854장 고품질 클린셋 학습에서 기존 PPAL의 bbox mAP 45.4% 대비 CB-PPAL은 50.9%를 달성해 약 5%p 향상했다. 추가 데이터 확보 후 전체 mAP(IoU 0.50)는 0.726 → 0.774(+6.6%)로 개선되었고, Vehicle 클래스 대규모 증강(36,388 → 147,994)으로 소형 객체 탐지 성능 mAP(small)이 +39.3% 향상되었다. Harbor·Train station·Airport 등 기존 저성능 클래스에서 두드러진 개선이 확인되었다. 자동 레이블링 파이프라인은 수동 어노테이션 비용을 기존 대비 70% 이상 절감할 수 있을 것으로 추정된다.
+      </p>
     </section>
 
     <!-- ============= STATUS ============= -->
     <section class="detail-section">
       <h3>Status</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>
+        2023 — 2026 한국연구재단·과기정통부 중견연구자지원사업(유형1)으로 수행된 3개년 과제. 1차년도(2024) 이미지 검색 기반 샘플링, 2차년도(2025) CB-PPAL 객체 검출 확장, 3차년도 대규모 위성 영상 실증을 거쳐 최종보고서(2026) 제출과 함께 과제 완료. 개발된 CB-PPAL 프레임워크 및 대규모 위성 영상 데이터셋은 국립한밭대학교 최동걸 교수 연구실에 보존·관리된다.
+      </p>
     </section>
 
   </main>

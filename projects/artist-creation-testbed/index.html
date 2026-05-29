@@ -43,26 +43,70 @@
       <h1 class="detail-title">사용자 미술 창작 지원을 위한 아티스트 관점 창작 코멘트/교정 테스트베드 구축</h1>
 
       <p class="detail-subtitle">
-        <!-- TODO: 한 줄 요약 -->
+        사용자가 입력한 미술 작품을 김홍도·신윤복 등 아티스트의 관점에서 분석하고, RAG 기반 화풍 분석과 Visual Grounding 기반 교정 영역 가시화를 MCP 아키텍처로 통합한 창작 코멘트/교정 테스트베드.
       </p>
     </header>
 
     <!-- ============= OVERVIEW ============= -->
     <section class="detail-section">
       <h3>Overview</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>
+        본 과제는 사용자가 입력한 미술 작품 이미지를 조선 후기 대표 화가(김홍도, 신윤복 등)의 관점에서 심층 분석하고,
+        해당 아티스트의 화풍과 작법에 부합하도록 이미지 코멘트 및 교정 정보를 생성·가시화하여 맞춤형 창작 지도를 제공하는
+        지능형 테스트베드를 구축하는 것을 목표로 한다. 단순한 스타일 모방을 넘어 아티스트의 창작 의도와 기법적 원리를
+        사용자에게 전달함으로써 교육적 가치를 창출하는 데 초점을 둔다.
+      </p>
+      <p>
+        전통 회화 데이터는 화풍·기법·구도·시대적 맥락 등 복합적 의미가 얽힌 다층적 구조를 가지므로, 일반적인 이미지 분석
+        모델로는 예술적 뉘앙스를 깊이 있게 평가하기 어렵다. 이를 해결하기 위해 작가별 도메인 특화 데이터베이스를 구축하고,
+        RAG(Retrieval-Augmented Generation)로 아티스트의 예술 철학에 근거한 심층 피드백을 생성하며, Visual Grounding으로
+        텍스트 피드백과 이미지 내 교정 영역을 정밀하게 연동한다. 전체 흐름은 이질적 AI 모듈을 중앙에서 제어하는
+        MCP(Multi-Modal Control Plane) 아키텍처로 통합되어, 사용자가 직관적으로 이해하고 수정할 수 있는 실질적 가이드를 제공한다.
+        본 과제는 ETRI 수요에 따라 한밭대학교 산학협력단이 수행하였다.
+      </p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;아티스트 관점 창작 코멘트/교정 기술 전체 구성도 및 데이터 흐름&gt; <span style="opacity:.7">(출처: 결과보고서_한밭대학교.hwp)</span></p>
     </section>
 
     <!-- ============= APPROACH ============= -->
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li style="color: var(--muted)">내용 준비 중입니다.</li>
+        <li>
+          <strong>아티스트 도메인 데이터셋 구축</strong> — 공신력 있는 디지털 아카이브(e뮤지엄, 국립중앙박물관, 한국민족문화대백과사전, 간송 메타버스 뮤지엄 등)에서
+          김홍도(단원 풍속도첩)·신윤복(혜원 전신첩, 미인도) 작품과 화풍 텍스트를 수집. 이미지와 전문가 지식을 결합한 멀티모달 데이터셋을
+          <code>artist_info</code>, <code>major_works</code>, <code>techniques</code>, <code>features</code> 등의 필드로 세분화한 JSON으로 구조화.
+        </li>
+        <li>
+          <strong>풍속화 동일 장르 내 화풍 대비 전략</strong> — 식별이 쉬운 정선(진경산수)·김홍도 대신, 같은 풍속화 장르를 공유하면서도 필선의 태세,
+          채색 활용, 소재 선택에서 분명한 차이를 보이는 김홍도와 신윤복을 핵심 타깃으로 선정하여 전문가 수준의 미세 화풍 식별을 유도.
+        </li>
+        <li>
+          <strong>RAG 기반 평가 기준·등급 체계</strong> — 동양화 전통 비평 기준인 '6법'(기운생동, 골법용필, 응물상형, 수류부채, 경영위치, 전이모사)과
+          '5품'(신품, 묘품, 능품 등) 등급 체계를 고어·현대적 해석·세부 기술 항목 등으로 계층화한 JSON 지식 베이스로 구축.
+        </li>
+        <li>
+          <strong>작가별 독립 Vector DB</strong> — 단일 DB 구성 시 발생하는 작가 간 화풍 혼재 문제를 피하기 위해, CLIP Image Encoder(ViT-B/32) 임베딩과
+          FAISS Index를 작가별로 독립 구성하여 검색 정확도를 확보.
+        </li>
+        <li>
+          <strong>RAG 기반 피드백 생성</strong> — 입력 이미지를 작가별 Vector DB와 대조해 유사 레퍼런스·비평 데이터를 검색하고,
+          Qwen2.5-VL(7B)이 추출한 시각적 특징과 결합하여 LangChain을 통해 LLM(GPT-OSS 20B)에 주입, 6법별 독립 JSON 피드백(evaluation, suggestion, grounding_query)을 생성하고 점수 기반 수정 우선순위를 부여.
+        </li>
+        <li>
+          <strong>Visual Grounding 기반 교정 영역 가시화</strong> — 강화학습(RL/GRPO) 기반 Vision Reasoner가 자연어 수정 요청을 해석해
+          타깃 객체를 탐지(Detection)·분할(Segmentation)하고, Chain-of-Thought 근거와 함께 Bounding Box/Object Mask를 생성.
+          우선순위별로 개별 Visual Grounding을 호출하여 여러 객체가 한 쿼리에 동시 탐지되는 문제를 개선.
+        </li>
+        <li>
+          <strong>MCP 통합 및 Text-to-Visual 검증</strong> — MCP가 이미지 입력부터 피드백 가시화까지 전 과정을 오케스트레이션하고,
+          원본 이미지 위에 교정 영역을 오버레이로 표시하며 텍스트 수정 가이드를 함께 제공. Qwen-Image-Edit를 활용한 피드백 반영 이미지 생성도 실험.
+        </li>
       </ul>
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
-        <!-- TODO: 담당 역할 -->
+        연구 수행 및 알고리즘 개발 참여 — RAG 파이프라인, 작가별 Vector DB, Visual Grounding 및 MCP 통합 테스트베드 구축.
       </div>
     </section>
 
@@ -70,14 +114,53 @@
     <section class="detail-section">
       <h3>Methods &amp; Tech</h3>
       <div class="tech-tags">
-        <!-- TODO: 기술 태그 -->
+        <span class="tag">RAG</span>
+        <span class="tag">Visual Grounding</span>
+        <span class="tag">MCP (Multi-Modal Control Plane)</span>
+        <span class="tag">Qwen2.5-VL (7B)</span>
+        <span class="tag">GPT-OSS 20B</span>
+        <span class="tag">CLIP (ViT-B/32)</span>
+        <span class="tag">FAISS</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">Vision Reasoner / GRPO</span>
+        <span class="tag">SAM2</span>
+        <span class="tag">Qwen-Image-Edit</span>
+        <span class="tag">PyTorch 2.8.0</span>
       </div>
+    </section>
+
+    <!-- ============= RESULTS ============= -->
+    <section class="detail-section">
+      <h3>Results</h3>
+      <p>
+        김홍도·신윤복·정선 작품을 포함한 자체 구축 코퍼스와 ETRI 전달 데이터(이미지 100점, 코멘트 Excel 1개)를 기반으로 통합 피드백 시스템을 구현하였다.
+        전년도 시스템의 문제점(하나의 피드백에 여러 평가 축 혼재, 자유 서술형 출력으로 인한 후속 모듈 파싱 곤란, 객체-피드백 연결 정보 미반영)을
+        개선하여, 6법 각각을 독립 평가 객체로 분리하고 score 기반 정렬 후 priority를 부여하며 LLM 출력을 JSON 포맷으로 강제하였다.
+      </p>
+      <p>
+        실제 스케치 입력에 대해 종합평·등급 산정(예: 능품)과 6법별 우선순위 피드백, 그리고 우선순위별 Visual Grounding Bounding Box 탐지가 동작함을 확인하였다.
+        피드백 반영 이미지 생성 실험에서는 Qwen-Image-Edit 적용 시 문장 단순화 + 영문 번역 방식(방식 2-2)이 객체 이동·크기 조정·금선·원근감·먹붓질 등
+        편집 요소를 가장 충실히 반영하였으며, '스타일 유지' 지시 추가나 6법 제안 전체 입력 방식은 원본 훼손 또는 성능 저하를 유발하였다.
+        기존 전문가 GT를 그대로 사용하면 편집이 거의 수행되지 않아, 전문 용어의 시각적 묘사 대체·무관 내용 삭제·추상 요소 구체화·장문의 단문 구조화로 구성된
+        4단계 전처리를 적용하는 것이 효과적임을 확인하였다.
+      </p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;김홍도·신윤복 데이터셋 샘플 및 화풍 특징 예시&gt; <span style="opacity:.7">(출처: 결과보고서_한밭대학교.hwp)</span></p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;RAG + Visual Grounding 통합 피드백 시스템 파이프라인(Query Image → Artist DB → CLIP/FAISS → Qwen2.5-VL → LLM)&gt; <span style="opacity:.7">(출처: ETRI_LLM페르소나_260511.pptx)</span></p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;6법별 우선순위 피드백과 Visual Grounding BBox 결과 정성 예시&gt; <span style="opacity:.7">(출처: ETRI_LLM페르소나_260511.pptx)</span></p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;Qwen-Image-Edit 기반 피드백 반영 이미지 수정 성공/실패 사례(원본·편집본 비교)&gt; <span style="opacity:.7">(출처: ETRI_LLM페르소나_260511.pptx)</span></p>
     </section>
 
     <!-- ============= STATUS ============= -->
     <section class="detail-section">
       <h3>Status</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>
+        2025년 12월 12일 용역 수행 결과 보고서 제출. 선행 기술 조사, 아티스트 데이터셋 구축, RAG·Visual Grounding·MCP 통합 테스트베드 개발 및
+        실효성 검증을 완료하였다. 실험 환경은 Ubuntu 22.04 LTS, Python 3.11.10, CUDA 12.1, PyTorch 2.8.0, Docker 기반으로 구성하였다.
+      </p>
     </section>
 
   </main>

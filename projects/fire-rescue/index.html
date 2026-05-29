@@ -43,26 +43,48 @@
       <h1 class="detail-title">화재 재난 대응을 위한 요구조자 탐지 기술 개발</h1>
 
       <p class="detail-subtitle">
-        <!-- TODO: 한 줄 요약 -->
+        대심도 철도시설(GTX 등) 화재 재난 상황에서 영상·음성을 융합해 요구조자를 탐지하고, 위치·상태·인원을 실시간으로 파악하는 인공지능 인지 기술 개발. 기술조사·설계(2023) → 탐지 기술 개발(2024) → 통합 파이프라인 고도화(2025)로 이어진 다년도 연구.
       </p>
     </header>
 
     <!-- ============= OVERVIEW ============= -->
     <section class="detail-section">
       <h3>Overview</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>
+        본 과제는 국토교통부 「대심도 장대터널(GTX 등) 재난 대응 복합훈련장 개발 사업」의 핵심분야로,
+        한국철도기술연구원이 주관하고 한국기계연구원(KIMM)이 <strong>「화재 및 요구조자 인지기술 개발」</strong> 세부([1-1])를
+        담당한다. 지하 깊은 곳에 위치한 대심도 철도시설은 화재·연기·정전 등 재난 발생 시 대피와 구조가 매우 어렵기 때문에,
+        재난 상황에서 이용자의 위치·상태·특성을 실시간으로 파악해 신속한 구조를 지원하는 요구조자 인지 기술이 필수적이다.
+        특히 연기·암전·객체 가려짐처럼 영상 조건이 극도로 열악한 환경에서도 안정적으로 사람을 탐지하는 것을 목표로 한다.
+      </p>
+      <p>
+        연구는 연도별로 단계적으로 진행되었다.
+        <strong>2023년(1차년도)</strong>에는 사람 탐지와 대규모 군중 수 계산 분야의 최신 기술(CNN·Transformer 계열)과
+        RGB·IR(Thermal) 데이터셋을 폭넓게 조사·분석하고 인지 기술의 전체 설계 방향을 수립했다.
+        <strong>2024년(2차년도)</strong>에는 조사 결과를 바탕으로 RGB/IR 카메라 영상을 활용한 이용자 검출 멀티모달 알고리즘과
+        저조도 환경 객체 인식 알고리즘을 개발·검증했다.
+        <strong>2025년(3차년도)</strong>에는 화재 인지와 요구조자 탐지를 하나로 묶은 통합 파이프라인을 구축하고,
+        음성 기반 멀티모달 탐지, 요구조자 상태 인식, 거리 추정, 인원 카운팅 등으로 기술을 고도화했다.
+      </p>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;요구조자 인지 기술과 대심도 재난 대응 복합훈련장의 연구 관련성 개념도&gt; <span style="opacity:.7">(출처: 1차년도_대심도_기술조사_분석_설계_보고서.hwp)</span></p>
     </section>
 
     <!-- ============= APPROACH ============= -->
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li style="color: var(--muted)">내용 준비 중입니다.</li>
+        <li><strong>기술조사·설계 (2023)</strong> — 사람 탐지(YOLOv5/YOLOX/YOLOv6, SWIN Transformer, DETR, CO-DETR, DINO)와 대규모 군중 수 계산(P2PNet, FIDTM, MAN, TAFNet, MAFNet 등) 기법을 CNN/Transformer 구조로 분류 조사하고, RGB 및 RGB-IR(Thermal) 데이터셋(KAIST Multispectral, FLIR Thermal, RGBT-CC, ShanghaiTech 등)을 정리해 재난 환경 일반화 방향 설계.</li>
+        <li><strong>저조도·악조건 탐지 (2024 → 2025)</strong> — 연기·암전·저대비 환경에서의 고신뢰 사람 탐지를 위해 Attention 중심 실시간 탐지 모델(YOLOv12)을 도입하고 저조도 전용 데이터셋(ExDark)으로 학습·평가.</li>
+        <li><strong>화재 및 요구조자 탐지 통합 파이프라인 (2025)</strong> — 평시(인원 카운팅·추적)와 화재 발생시(멀티모달 화재 판단 → 알림 → 요구조자 탐지 → 상태 판별 → 거리 추정)의 두 갈래로 동작하는 통합 SW 설계.</li>
+        <li><strong>음성 기반 멀티모달 요구조자 탐지</strong> — OpenAI Whisper 기반 음성 인식으로 "도와주세요" 등 한국어 긴급 키워드를 감지하면 YOLO 영상 분석을 조건부 활성화하는 이중 검증 구조로, 시각적으로 가려진 요구조자까지 탐지.</li>
+        <li><strong>요구조자 상태 인식</strong> — MVD(Masked Video Distillation) 기반 행동 인식으로 실신·전도·배회 등 상태를 연속 프레임의 시간적 맥락으로 판별, 기존 객체 탐지의 자세 오탐 문제 해소.</li>
+        <li><strong>실내 거리(위치) 추정</strong> — SAM 세그멘테이션과 단안 깊이 추정 모델(DepthPro)을 결합하여 사람 영역을 정밀 추출하고 거리를 회귀, 배경 노이즈를 효과적으로 제거.</li>
+        <li><strong>In/Out 인원 카운팅 및 추적</strong> — YOLOv12 + ByteTrack(칼만 필터·헝가리안 알고리즘)으로 경계선 교차 기반 IN/OUT 카운팅 수행, 화재 발생 시 공간 내 현존 인원 추론에 활용.</li>
       </ul>
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
-        <!-- TODO: 담당 역할 -->
+        KIMM 「화재 및 요구조자 인지기술 개발」 세부과제의 연구원으로 참여. 요구조자 탐지·인지 알고리즘 개발 및 통합 파이프라인 구현에 기여 (저조도 객체 인식, 음성 멀티모달 탐지, 상태 인식, 거리 추정, 인원 카운팅 등 컴퓨터 비전 알고리즘 연구 수행).
       </div>
     </section>
 
@@ -70,14 +92,47 @@
     <section class="detail-section">
       <h3>Methods &amp; Tech</h3>
       <div class="tech-tags">
-        <!-- TODO: 기술 태그 -->
+        <span class="tag">YOLOv12</span>
+        <span class="tag">ByteTrack</span>
+        <span class="tag">SAM</span>
+        <span class="tag">DepthPro</span>
+        <span class="tag">MVD</span>
+        <span class="tag">Whisper</span>
+        <span class="tag">Transformer / DETR</span>
+        <span class="tag">RGB-IR Multimodal</span>
+        <span class="tag">Monocular Depth Estimation</span>
+        <span class="tag">Action Recognition</span>
       </div>
+    </section>
+
+    <!-- ============= RESULTS ============= -->
+    <section class="detail-section">
+      <h3>Results</h3>
+      <p>
+        3차년도(2025) 기준 주요 정량 성과는 다음과 같다.
+      </p>
+      <ul>
+        <li><strong>화재(불꽃/연기) 인지</strong> — 통합 데이터셋(D-Fire, DFS-Fire-Dataset, AI-Hub 등)으로 YOLOv12(Area Attention·R-ELAN) 학습, 전체 mAP50 0.908(화재 0.921, 연기 0.895)로 목표 0.85 초과 달성.</li>
+        <li><strong>저조도 사람 탐지</strong> — ExDark 데이터셋에서 mAP50 0.889 달성, 기존 EMV-YOLO(0.782) 대비 약 13.68% 향상.</li>
+        <li><strong>In/Out 인원 카운팅</strong> — 6개 테스트 영상에서 100% Accuracy 달성(기존 연구 91% 대비 9%p 향상, 목표 60% 초과).</li>
+        <li><strong>요구조자 상태 인식</strong> — AI-Hub 「지하철 역사 내 CCTV 이상행동 영상」 기반 실신·전도·배회 3종 분류에서 94.7% Accuracy 달성(목표 mAP50 0.75 이상).</li>
+        <li><strong>거리 추정</strong> — SAM + DepthPro 결합으로 전체 거리 MAE 0.484m, 최종 성능 0.9708m 확보(5m 0.049m ~ 25m 0.872m).</li>
+      </ul>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;YOLOv12 기반 연기 및 화재 탐지 결과 예시&gt; <span style="opacity:.7">(출처: 3차년도_1__수정_연차보고서_v2.hwpx)</span></p>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;음성 기반 멀티모달 요구조자 탐지 알고리즘 개요도 및 작동 결과&gt; <span style="opacity:.7">(출처: 3차년도_1__수정_연차보고서_v2.hwpx)</span></p>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;실신·전도·배회 상태 인식(MVD) 예측 샘플&gt; <span style="opacity:.7">(출처: 3차년도_1__수정_연차보고서_v2.hwpx)</span></p>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;SAM + DepthPro 기반 실내 거리 추정 추론 결과&gt; <span style="opacity:.7">(출처: 3차년도_1__수정_연차보고서_v2.hwpx)</span></p>
     </section>
 
     <!-- ============= STATUS ============= -->
     <section class="detail-section">
       <h3>Status</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>
+        전체 사업 기간은 2023.04 ~ 2027.12(4년 9개월)이며, 본인 참여 구간은 2023 ~ 2025년이다.
+        1차년도(2023) 기술조사·분석·설계, 2차년도(2024) 단계보고서 및 탐지 알고리즘 검증을 거쳐
+        3차년도(2025)에는 통합 파이프라인·SW와 각 핵심 성과의 목표치를 달성하며 2단계 연차보고서를 제출했다.
+        이후 4~5차년도(2026~2027)에는 모델 최적화(실시간성·메모리 축소)와 테스트베드 실증을 통한 성능 고도화가 예정되어 있다.
+      </p>
     </section>
 
   </main>

@@ -43,41 +43,95 @@
       <h1 class="detail-title">주차 영상 개인정보 익명화 기술</h1>
 
       <p class="detail-subtitle">
-        <!-- TODO: 한 줄 요약 -->
+        주차장 CCTV 영상에서 사람 얼굴과 차량 번호판 같은 개인정보를 최신 객체 탐지 모델로 검출하고 실시간 비식별화하는 시스템 연구.
       </p>
     </header>
 
     <!-- ============= OVERVIEW ============= -->
     <section class="detail-section">
       <h3>Overview</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>
+        안전·시설물 관리 등 공공 목적의 CCTV가 급증하면서 주차 환경에서 수집되는 영상에도
+        사람 얼굴, 차량 번호판 등 개인정보가 그대로 노출되어 사생활 침해 논란이 확대되고 있다.
+        영상 감시 시스템 시장은 매년 약 10% 이상 성장하고 있으나, 주차 환경에 특성화되어
+        실시간으로 영상을 마스킹·서비스할 수 있는 비식별화 제품은 아직 부재한 상황이다.
+      </p>
+      <p>
+        본 과제는 한국과학기술정보연구원(KISTI)의 수요를 바탕으로, 기존 주차 공간 공공 CCTV
+        관제 시스템의 업무 흐름에 영향을 주지 않으면서 손쉽게 적용 가능한 비식별화 시스템 개발을
+        목표로 한다. 또한 국내 주차 환경 CCTV의 상황·문제점과 국내외 개인정보보호법·표준화
+        동향을 분석하고, 익명화 대상 선정 및 익명화 수준에 대한 기초 연구를 선행적으로 수행한다.
+        익명화가 적용된 영상 아카이브는 인공지능 학습 데이터로 재활용 가능하므로 기존 주차
+        영상 데이터의 활용도를 높이는 것도 함께 목표로 삼는다.
+      </p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;개인정보(번호판)가 노출된 주차 CCTV 영상 예시 및 연도별 공공기관 CCTV 설치 증가 추이&gt; <span style="opacity:.7">(출처: KISTI_주차관리_한밭대학교_최동걸_221129.hwp.txt)</span></p>
     </section>
 
     <!-- ============= APPROACH ============= -->
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li style="color: var(--muted)">내용 준비 중입니다.</li>
+        <li>국내 주차환경 CCTV 상황·문제점 파악 및 국내외 개인정보보호법·표준화(ISO/IEC 20889, ITU-T SG17 등) 규제 동향 분석을 통한 익명화 요구 수준 도출 및 가이드라인 마련</li>
+        <li>주차 환경에서 발생하는 노이즈(motion blur, 먼지, 조명·계절 변화 등)에 강인한 개인정보 객체(사람 얼굴, 차량 번호판) 탐지를 위한 최신 Object Detection 모델 조사·비교</li>
+        <li>차량 번호판 탐지: 현충원역 주차장 데이터셋(이미지 12,046장 / 번호판 13,251개)으로 YOLOv3, YOLOX(M·S) 학습 및 정량 비교</li>
+        <li>사람 얼굴 탐지: WIDER FACE 데이터셋(이미지 32,203장 / 레이블 393,703개)으로 RetinaFace, SCRFD 학습 및 정량 비교</li>
+        <li>비식별화 기법(Bluring, Mosaic, Removal and Transformation) 조사·식별성 평가 — 디블러링(DeepMosaics 등)으로 복원 가능한 블러·모자이크의 한계를 확인하고 복원 불가능한 Removal and Transformation(검정/흰색 박스 마스킹) 채택</li>
+        <li>탐지 모델의 위치 정보(xmin, xmax, ymin, ymax 비율) 추출 → 익명화 적용으로 이어지는 실시간 비식별화 파이프라인 설계 및 기존 CCTV 시스템 연동 구조 구축</li>
+        <li>비식별화된 주차 영상 아카이브의 AI 학습 데이터 재활용성 방안 마련</li>
       </ul>
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
-        <!-- TODO: 담당 역할 -->
+        한밭대학교 산학협력단 연구원으로 참여(연구책임자 최동걸 교수). 개인정보 객체 탐지 및 익명화 알고리즘 연구·개발에 참여.
       </div>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;개인정보 마스킹(익명화) 전체 파이프라인 개요도&gt; <span style="opacity:.7">(출처: KISTI_주차관리_한밭대학교_최동걸_221129.hwp.txt)</span></p>
     </section>
 
     <!-- ============= TECH STACK ============= -->
     <section class="detail-section">
       <h3>Methods &amp; Tech</h3>
       <div class="tech-tags">
-        <!-- TODO: 기술 태그 -->
+        <span class="tag">YOLOX</span>
+        <span class="tag">YOLOv3</span>
+        <span class="tag">RetinaFace</span>
+        <span class="tag">SCRFD</span>
+        <span class="tag">Object Detection</span>
+        <span class="tag">License Plate Detection</span>
+        <span class="tag">Face Detection</span>
+        <span class="tag">WIDER FACE</span>
+        <span class="tag">Anonymization / De-identification</span>
+        <span class="tag">Blur / Mosaic / Masking</span>
       </div>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;SCRFD 아키텍처 및 RetinaFace Multi-task 구조도&gt; <span style="opacity:.7">(출처: KISTI_주차관리_한밭대학교_최동걸_221129.hwp.txt)</span></p>
+    </section>
+
+    <!-- ============= RESULTS ============= -->
+    <section class="detail-section">
+      <h3>Results</h3>
+      <p>
+        차량 번호판 탐지에서는 YOLOX-M이 YOLOX-S보다 6.7 mAP 높은 추론 성능을 보이면서도
+        높은 초당 처리 속도를 유지하여 시스템 탑재 모델로 선정되었다. 사람 얼굴 탐지에서는
+        SCRFD가 RetinaFace 대비 4.4 mAP 높은 성능을 달성하여 최종 모델로 선정되었다.
+        구성된 모든 모델은 90% 이상의 탐지 성능을 보였으며, 탐지 → 위치 정보 추출 → 익명화로
+        이어지는 네트워크가 유기적으로 동작함을 확인하였다.
+      </p>
+      <p>
+        익명화 기법 비교 결과, 블러·모자이크는 디블러링으로 복원될 수 있어 개인정보 노출
+        위험이 있으므로 최종 익명화 기법으로는 복원이 불가능한 Removal and Transformation
+        (검정/흰색 박스 마스킹)을 채택하였다. 현충원역 주차장 데이터셋, 시청역 지하철 CCTV
+        등에서 사람 얼굴·차량 번호판을 탐지하고 익명화한 정성적 결과로 시스템 동작을 검증하였다.
+      </p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;AI 모델을 통한 번호판/얼굴 탐지 및 익명화 기법 적용 정성적 결과 예시&gt; <span style="opacity:.7">(출처: KISTI_주차관리_한밭대학교_최동걸_221129.hwp.txt)</span></p>
     </section>
 
     <!-- ============= STATUS ============= -->
     <section class="detail-section">
       <h3>Status</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>2022년 11월 28일 최종보고서 제출, 과제 완료.</p>
     </section>
 
   </main>

@@ -43,26 +43,39 @@
       <h1 class="detail-title">(폴리스랩2.0) 다중대역 영상처리, AI 영상인식 기술 기반으로 교통사고 감시 및 물피도주 분석 시스템 개발</h1>
 
       <p class="detail-subtitle">
-        <!-- TODO: 한 줄 요약 -->
+        가시광·근적외선·열화상 다중대역 영상과 레이더 정보를 융합하고, 광학 흐름(optical flow) 기반 차량 흔들림 분석으로 교통사고 및 물피도주(주차 후 도주) 상황을 자동으로 탐지하는 AI 영상인식 시스템.
       </p>
     </header>
 
     <!-- ============= OVERVIEW ============= -->
     <section class="detail-section">
       <h3>Overview</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>비가시 환경(야간·안개·미세먼지·음영)에서는 교통사고와 범죄가 더 빈번하고 치명적이며, 효율적인 대응 또한 어렵다. 본 과제는 날씨와 주야간 등 주변 환경에 영향을 받지 않도록 가시광·근적외선·열화상의 다중대역 영상과 77GHz 밀리미터파 레이더 정보를 융합(퓨전 센싱)하고, AI 영상인식을 통해 차량·사람·동물·장애물을 구분하여 이동속도·위치·거리·좌표 정보를 확보하는 것을 목표로 한다.</p>
+      <p>각 센서는 서로 다른 정보 특성을 가진다. 카메라 비전은 컬러를 인지하지만 거리 측정이 불가능하고 광량·악천후에 취약하며, 열화상은 외부 광원 없이 암흑에서도 동작하지만 색 정보를 얻지 못하고, 레이더는 정밀한 거리·속도 정보를 제공하지만 평면적인 객체 유무 판단에 가깝다. 이들을 통합 영상·AI 정보처리 융합 알고리즘으로 크로스체킹하여 단점을 상호 보완하고, 이를 바탕으로 교통사고 감시와 물피도주의 예방·대응을 효율화한다. 과제는 과학치안진흥센터 폴리스랩2.0 사업의 일환으로, (주)미루시스템즈를 주관기관으로 한국과학기술원(KAIST)·국립한밭대학교가 공동연구기관으로 참여하였다.</p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;다중대역 퓨전 센싱 시스템 구성도 / 가시광·열화상·레이더 센서 융합 개념도&gt; <span style="opacity:.7">(출처: _물피도주_2024_연차보고서_최종_.hwp.txt)</span></p>
     </section>
 
     <!-- ============= APPROACH ============= -->
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li style="color: var(--muted)">내용 준비 중입니다.</li>
+        <li>가시광·근적외선·열화상 다중대역 영상 처리로 주야간, 안개, 비, 눈, 미세먼지, 음영지역 등에서도 가시성을 확보</li>
+        <li>동축(coaxial) 시스템 기반의 픽셀 단위 이미지 정합과 블렌딩(퓨전)으로 거리별 정합 오차를 최소화하고 AI 인식률 향상</li>
+        <li>레이더(24/60/77GHz mmWave) 등 이종 전파 정보를 수용하는 개방형 멀티모달 구조로 거리·위치·속도 정보 확보</li>
+        <li>AI 영상인식으로 차량·사람·동물·장애물을 구분하고 객체의 상태·행동패턴을 분석하여 이상행동·동선을 추적</li>
+        <li>물피도주 분석: 영상에서 피해 차량 영역을 ROI로 지정(Mouse ROI)하고, 충돌 시점의 차량 흔들림(진동)을 광학 흐름으로 검출</li>
+        <li>ROI는 차량보다 작게, 흔들림 감지가 쉬운 위치로 선정하여 충돌로 인한 미세 움직임을 민감하게 포착</li>
+        <li>AI 분석 기능을 임베디드 형태로 내장하여 별도 분석 서버 없이 경제적으로 현장에 적용 가능하도록 설계</li>
       </ul>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;피해 차량 ROI 지정(Mouse ROI) 화면 예시&gt; <span style="opacity:.7">(출처: 0706_물피도주_데모_알고리즘_설명서.hwp.txt)</span></p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;물피도주 탐지 알고리즘 작동 방식(광학 흐름 기반 흔들림 분석) 다이어그램&gt; <span style="opacity:.7">(출처: 0706_물피도주_데모_알고리즘_설명서.hwp.txt)</span></p>
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
-        <!-- TODO: 담당 역할 -->
+        물피도주 영상 분석 알고리즘 개발 및 데모 시스템 구현에 참여(연차보고서 작성 참여 포함). ROI 기반 차량 흔들림(광학 흐름) 탐지 로직과 차량 탐지·추적, 성공/실패 케이스 분석을 수행.
       </div>
     </section>
 
@@ -70,14 +83,36 @@
     <section class="detail-section">
       <h3>Methods &amp; Tech</h3>
       <div class="tech-tags">
-        <!-- TODO: 기술 태그 -->
+        <span class="tag">Optical Flow</span>
+        <span class="tag">차량 탐지·추적</span>
+        <span class="tag">물피도주 분석</span>
+        <span class="tag">ROI 선택</span>
+        <span class="tag">다중대역 영상 퓨전</span>
+        <span class="tag">열화상(Thermal)</span>
+        <span class="tag">근적외선(NIR)</span>
+        <span class="tag">mmWave Radar (77GHz)</span>
+        <span class="tag">멀티모달 센서 퓨전</span>
+        <span class="tag">AI 영상인식</span>
       </div>
+    </section>
+
+    <!-- ============= RESULTS ============= -->
+    <section class="detail-section">
+      <h3>Results</h3>
+      <p>물피도주 데모 알고리즘은 충돌 시점의 피해 차량 흔들림을 검출하여 출력 결과를 제시하는 형태로 구현되었으며, 적용 조건에 따른 성공·실패 케이스를 정리하였다.</p>
+      <ul>
+        <li><strong>성공 케이스</strong>: 고정된 카메라 View, 고해상도 영상, 명확한 충돌 시점, 그리고 영상으로 확인할 수 있을 정도로 피해 차량이 흔들리는 경우.</li>
+        <li><strong>실패 케이스</strong>: 고정되지 않은 카메라 View(예: 핸드폰 촬영), 가려진 차량, 저해상도 영상, 차가 아닌 객체와의 물피도주, 정확하게 선택되지 않은 충돌 지점 ROI.</li>
+      </ul>
+      <p>연구개발비 집행 측면에서는 2024년 기준 한국과학기술원 집행률 90.83%, 국립한밭대학교 집행률 86.11%로 보고되었다.</p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;물피도주 알고리즘 출력 결과 예시(충돌 탐지 정성 결과)&gt; <span style="opacity:.7">(출처: 0706_물피도주_데모_알고리즘_설명서.hwp.txt)</span></p>
     </section>
 
     <!-- ============= STATUS ============= -->
     <section class="detail-section">
       <h3>Status</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>과학치안진흥센터 폴리스랩2.0 사업으로 2023년 — 2025년에 걸쳐 수행되었으며, 2023년·2024년 연차보고서가 제출되고 물피도주 데모 알고리즘이 구현되었다.</p>
     </section>
 
   </main>

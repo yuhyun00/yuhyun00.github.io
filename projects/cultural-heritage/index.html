@@ -43,7 +43,7 @@
       <h1 class="detail-title">개인 맞춤형 문화유산 해설을 위한 문화유산 분류 테스트베드 구축</h1>
 
       <p class="detail-subtitle">
-        <!-- TODO: 한 줄 요약 -->
+        e-museum·국립중앙박물관 문화유산 데이터의 긴꼬리·계층적 구조를 다루는 딥러닝 분류 알고리즘과 Vision-LLM 기반 주제 검색을 개발하고, 이를 적용한 분류/검색 테스트베드를 3개년에 걸쳐 v1.0부터 v3.0까지 구축한 과제.
       </p>
     </header>
 
@@ -51,43 +51,79 @@
     <section class="detail-section">
       <h3>Versions</h3>
       <ul>
-        <li>v1.0 (2023) — 개인 맞춤형 문화유산 해설을 위한 문화유산 분류 테스트베드 구축</li>
-        <li>v2.0 (2024) — 개인 맞춤형 문화유산 해설을 위한 문화유산 분류 테스트베드 v2.0 구축</li>
-        <li>v3.0 (2025) — 디지털 문화유산 고속 브라우징을 위한 문화유산 분류/검색 테스트베드 v3.0 구축</li>
+        <li>v1.0 (2023) — 개인 맞춤형 문화유산 해설을 위한 문화유산 분류 테스트베드 구축. e-museum 크롤링으로 5개 상위·25개 하위 클래스의 계층적 데이터셋을 구축하고, 긴꼬리(Long-tail) 분포에 강인한 일관성 손실 기반 학습 전략과 Focal loss를 활용한 계층적 학습, ML-Decoder·Grounding DINO 기반 제로샷/미분류 객체 처리를 다룸.</li>
+        <li>v2.0 (2024) — 개인 맞춤형 문화유산 해설을 위한 문화유산 분류 테스트베드 v2.0 구축. 데이터셋을 205개 세부 클래스(8개 그룹)의 확장 계층 체계로 확대하고, ML-Decoder 기반 평면적 학습 + 그룹별 추론 분류기를 도입(검증 Accuracy 85.85%). Vision-LLM과 Sentence Embedding을 결합한 문화유산 주제 검색 기능을 신규 추가(mP@1 66.67%).</li>
+        <li>v3.0 (2025) — 디지털 문화유산 고속 브라우징을 위한 문화유산 분류/검색 테스트베드 v3.0 구축. 국립중앙박물관 기증 데이터(185개 세부 클래스, 최대 4계층)로 전환하고, 멀티헤드 어텐션 기반 계층적 지식 증류 분류 알고리즘으로 검증 Accuracy 96.67% 달성. 주제 검색은 Qwen2.5-VL-3B-Instruct와 multi-qa-MiniLM 임베딩으로 고도화(mP@1 79.17%).</li>
       </ul>
     </section>
 
     <!-- ============= OVERVIEW ============= -->
     <section class="detail-section">
       <h3>Overview</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>가상공간 내 문화유산 분류·검색을 위한 브라우징 기술은, 문화유산에서 드러나는 시각적 정보로 인식·추론 가능한 스토리텔링 요소와 전문 학예사가 구축하는 비시각적 정보를 결합하여, 관람객의 관심사에 맞춘 문화유산 해설 콘텐츠를 생성함으로써 맞춤형 관람 경험을 제공하는 기술이다. 이를 위해 양식·용도·사용 계층별로 문화유산을 분류하는 기능이 요구사항에 맞게 설계되고, 분류 성능이 점차 발전할 수 있도록 설계되어야 한다. 본 과제는 한국전자통신연구원(ETRI)의 수요에 따라 한밭대학교 산학협력단이 수행하였다.</p>
+      <p>문화유산 데이터는 잘 정제된 공개 데이터셋과 달리, 소수 클래스에 데이터가 집중되는 극단적인 긴꼬리(Long-tail) 분포를 가지며 상위·하위 분류로 이루어진 계층적 구조를 동시에 갖는다는 점에서 차별화된다. 이러한 특성을 효과적으로 다루기 위해 긴꼬리 분포에 강인하면서 계층 정보를 활용하는 학습 전략과, 학습되지 않은 미상 문화유산에 대응하는 제로샷(Zero-shot)·퓨샷(Few-shot) 방법론을 연구하였다.</p>
+      <p>과제는 3개년에 걸쳐 발전하였다. 2023년(v1.0)에는 e-museum 데이터(5개 상위·25개 하위 클래스)를 대상으로 긴꼬리·계층 분류 알고리즘과 분류 테스트베드를 구축하였다. 2024년(v2.0)에는 데이터셋을 205개 세부 클래스로 확장하고 ML-Decoder 기반 통합 분류기를 적용하는 한편, Vision Large Language Model(VLLM) 기반 문화유산 주제 검색 기능을 새롭게 추가하였다. 2025년(v3.0)에는 국립중앙박물관 기증 데이터(185개 세부 클래스, 최대 4계층)로 전환하고, 멀티헤드 어텐션 기반 계층적 지식 증류로 분류 정확도를 크게 끌어올렸으며 주제 검색에 Qwen2.5-VL 등 최신 Vision-LLM을 도입하여 디지털 문화유산 고속 브라우징을 지원하는 분류/검색 테스트베드로 고도화하였다.</p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;문화유산 분류 시스템 개요도&gt; <span style="opacity:.7">(출처: 2023_문화유산_최종보고서.hwp)</span></p>
     </section>
 
     <!-- ============= APPROACH ============= -->
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li style="color: var(--muted)">내용 준비 중입니다.</li>
+        <li><strong>데이터셋 구축:</strong> e-museum 웹사이트 크롤링(v1.0~v2.0)과 국립중앙박물관 기증 데이터(v3.0)로 양식·용도·사용 계층별 문화유산 데이터셋을 구축. 상위/하위로 이루어진 계층 구조로 조직화(v1.0 5개 상위·25개 하위 → v2.0 205개 세부 클래스/8개 그룹 → v3.0 185개 세부 클래스/최대 4계층).</li>
+        <li><strong>긴꼬리 분포 대응(v1.0):</strong> 유니폼 샘플링과 클래스 균등 샘플링의 장점을 결합하는 일관성 손실(consistency loss)을 제안. 공유 백본과 2개 디코더 구조에서 교차 디코더 로짓을 정렬하고, cRT에서 영감을 받아 α값을 점진적으로 조정하는 2단계 학습을 적용.</li>
+        <li><strong>계층 정보 활용(v1.0):</strong> 같은 상위 클래스에 속한 하위 클래스 로짓의 평균을 softmax로 변환해 상위 클래스를 예측하고, 어려운 샘플에 집중하는 Focal loss로 추가 손실을 부여하여 계층 일관성을 강화.</li>
+        <li><strong>제로샷·멀티라벨 확장 및 미분류 처리(v1.0):</strong> 기존 GAP+FC head를 ML-Decoder로 대체하여 보이지 않는 클래스로 일반화하고, Grounding DINO에 'every objects' 프롬프트를 입력해 미분류 객체를 탐지·클러스터링.</li>
+        <li><strong>통합 분류기(v2.0):</strong> 계층 제약 없이 전체 클래스를 동시에 학습하는 평면적 학습 후, 추론 단계에서 클래스를 그룹별로 묶어 최대값 클래스를 선별하고 일대일 매칭으로 최종 분류. 단일 디코더로 계산 효율과 노이즈 견고성을 확보.</li>
+        <li><strong>계층적 지식 증류(v3.0):</strong> 상위 계층(nationality·material·purpose)부터 순차 학습하며 멀티헤드 어텐션 기반 지식 증류로 상위 지식을 하위 계층으로 전달. label masking·pseudo label·availability mask로 누락 레이블을 처리하고, 분류·증류·계층 일관성 손실을 결합한 통합 손실로 최적화.</li>
+        <li><strong>Vision-LLM 기반 주제 검색(v2.0~v3.0):</strong> Vision-LLM으로 회화 이미지를 풍부한 텍스트 설명으로 변환하고 Sentence Embedding으로 의미론적 벡터화한 뒤 코사인 유사도로 최근접 검색. v3.0에서는 Qwen2.5-VL-3B-Instruct와 multi-qa-MiniLM-L6-cos-v1을 사용.</li>
       </ul>
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
-        <!-- TODO: 담당 역할 -->
+        문화유산 분류/검색 알고리즘 연구 및 개발, 데이터셋 구축, 테스트베드 구현에 참여.
       </div>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;긴꼬리·계층 정보를 활용한 제안 학습 전략(일관성 손실 + Focal loss) 구조도&gt; <span style="opacity:.7">(출처: 2023_문화유산_최종보고서.hwp)</span></p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;멀티헤드 어텐션 기반 계층적 지식 증류 분류 알고리즘 파이프라인&gt; <span style="opacity:.7">(출처: 2025_문화유산_분류_결과보고서.hwp)</span></p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;Vision-LLM + Sentence Embedding 기반 문화유산 주제 검색 시스템 개요도&gt; <span style="opacity:.7">(출처: 2024_문화유산_분류_결과보고서.hwp)</span></p>
     </section>
 
     <!-- ============= TECH STACK ============= -->
     <section class="detail-section">
       <h3>Methods &amp; Tech</h3>
       <div class="tech-tags">
-        <!-- TODO: 기술 태그 -->
+        <span class="tag">Long-tailed Recognition</span>
+        <span class="tag">Hierarchical Classification</span>
+        <span class="tag">Consistency Loss</span>
+        <span class="tag">Focal Loss</span>
+        <span class="tag">Knowledge Distillation</span>
+        <span class="tag">ML-Decoder</span>
+        <span class="tag">Grounding DINO</span>
+        <span class="tag">Vision-LLM (Qwen2.5-VL)</span>
+        <span class="tag">Sentence Embedding (MiniLM)</span>
+        <span class="tag">Zero-shot / Few-shot</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">Docker</span>
       </div>
+    </section>
+
+    <!-- ============= RESULTS ============= -->
+    <section class="detail-section">
+      <h3>Results</h3>
+      <p>분류 알고리즘은 검증 데이터셋 기준 v2.0에서 Accuracy 85.85%(목표 80% 이상), v3.0에서 Accuracy 96.67%(목표 83% 이상)를 달성하였다. v1.0에서는 제안 학습 전략을 적용한 모델이 베이스라인 대비 학습 데이터가 적은 상위 클래스에서 성능이 월등히 높고, 상위 클래스 오분류가 줄어 안정성이 향상됨을 정성적으로 확인하였다.</p>
+      <p>문화유산 주제 검색은 회화 120종·388장(12개 세부 클래스) 데이터셋에서 v2.0 mP@1 66.67%(목표 62% 이상), v3.0 mP@1 79.17%(목표 70% 이상)를 기록하여 Vision-LLM 기반 멀티모달 접근이 시각적 특징과 의미론적 맥락을 동시에 고려하는 데 효과적임을 실증하였다.</p>
+
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;베이스라인 vs 제안 학습 전략의 클래스별 분류 성능 비교 결과&gt; <span style="opacity:.7">(출처: 2023_문화유산_최종보고서.hwp)</span></p>
     </section>
 
     <!-- ============= STATUS ============= -->
     <section class="detail-section">
       <h3>Status</h3>
-      <p style="color: var(--muted)">내용 준비 중입니다.</p>
+      <p>3개년 연속 과제로 수행 완료. v1.0은 2023년 11월, v2.0은 2024년 11월, v3.0은 2025년 11월에 각각 용역 수행 결과 보고서를 제출하였으며, 각 연차마다 데이터셋 구축·분류 및 검색 알고리즘 개발·테스트베드 산출물을 납품하였다.</p>
     </section>
 
   </main>
