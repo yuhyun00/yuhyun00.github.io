@@ -62,7 +62,7 @@
         <li>I3D 백본을 사용해 RGB Video와 Depth Video 각각의 feature를 추출하고, 두 feature 사이의 alignment를 MSE Loss로 정렬</li>
         <li>두 feature를 섞은 mixed feature를 포함해 총 3개 feature의 logit을 구성하고, uni-modal logit을 multi-modal logit에 MSE Loss로 최적화</li>
         <li>각 logit은 cross-entropy Loss로 함께 최적화하여 단일·다중 모달 모두에서 일관된 분류 성능 확보</li>
-        <li>추론 시 RGB uni-modal, Depth uni-modal, RGB-Depth multi-modal 어떤 입력이 들어와도 동작하도록 설계 (missing modality 대응)</li>
+        <li>추론 시 RGB uni-modal, Depth uni-modal, RGB-Depth multi-modal 중 어떤 입력이 들어와도 동작하도록 설계 (missing modality 대응)</li>
         <li>대규모 RGB 데이터셋(Kinetics 400)과 RGB+D 데이터셋(Toyota Smarthome)을 활용한 학습·평가</li>
       </ul>
 

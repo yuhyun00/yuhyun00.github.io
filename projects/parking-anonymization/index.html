@@ -72,11 +72,11 @@
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li>국내 주차환경 CCTV 상황·문제점 파악 및 국내외 개인정보보호법·표준화(ISO/IEC 20889, ITU-T SG17 등) 규제 동향 분석을 통한 익명화 요구 수준 도출 및 가이드라인 마련</li>
+        <li>국내 주차 환경 CCTV 상황·문제점 파악 및 국내외 개인정보보호법·표준화(ISO/IEC 20889, ITU-T SG17 등) 규제 동향 분석을 통한 익명화 요구 수준 도출 및 가이드라인 마련</li>
         <li>주차 환경에서 발생하는 노이즈(motion blur, 먼지, 조명·계절 변화 등)에 강인한 개인정보 객체(사람 얼굴, 차량 번호판) 탐지를 위한 최신 Object Detection 모델 조사·비교</li>
         <li>차량 번호판 탐지: 현충원역 주차장 데이터셋(이미지 12,046장 / 번호판 13,251개)으로 YOLOv3, YOLOX(M·S) 학습 및 정량 비교</li>
         <li>사람 얼굴 탐지: WIDER FACE 데이터셋(이미지 32,203장 / 레이블 393,703개)으로 RetinaFace, SCRFD 학습 및 정량 비교</li>
-        <li>비식별화 기법(Bluring, Mosaic, Removal and Transformation) 조사·식별성 평가 — 디블러링(DeepMosaics 등)으로 복원 가능한 블러·모자이크의 한계를 확인하고 복원 불가능한 Removal and Transformation(검정/흰색 박스 마스킹) 채택</li>
+        <li>비식별화 기법(Blurring, Mosaic, Removal and Transformation) 조사·식별성 평가 — 디블러링(DeepMosaics 등)으로 복원 가능한 블러·모자이크의 한계를 확인하고 복원 불가능한 Removal and Transformation(검정/흰색 박스 마스킹) 채택</li>
         <li>탐지 모델의 위치 정보(xmin, xmax, ymin, ymax 비율) 추출 → 익명화 적용으로 이어지는 실시간 비식별화 파이프라인 설계 및 기존 CCTV 시스템 연동 구조 구축</li>
         <li>비식별화된 주차 영상 아카이브의 AI 학습 데이터 재활용성 방안 마련</li>
       </ul>

@@ -75,7 +75,7 @@
       <ul>
         <li><strong>기술조사·설계 (2023)</strong> — 사람 탐지(YOLOv5/YOLOX/YOLOv6, SWIN Transformer, DETR, CO-DETR, DINO)와 대규모 군중 수 계산(P2PNet, FIDTM, MAN, TAFNet, MAFNet 등) 기법을 CNN/Transformer 구조로 분류 조사하고, RGB 및 RGB-IR(Thermal) 데이터셋(KAIST Multispectral, FLIR Thermal, RGBT-CC, ShanghaiTech 등)을 정리해 재난 환경 일반화 방향 설계.</li>
         <li><strong>저조도·악조건 탐지 (2024 → 2025)</strong> — 연기·암전·저대비 환경에서의 고신뢰 사람 탐지를 위해 Attention 중심 실시간 탐지 모델(YOLOv12)을 도입하고 저조도 전용 데이터셋(ExDark)으로 학습·평가.</li>
-        <li><strong>화재 및 요구조자 탐지 통합 파이프라인 (2025)</strong> — 평시(인원 카운팅·추적)와 화재 발생시(멀티모달 화재 판단 → 알림 → 요구조자 탐지 → 상태 판별 → 거리 추정)의 두 갈래로 동작하는 통합 SW 설계.</li>
+        <li><strong>화재 및 요구조자 탐지 통합 파이프라인 (2025)</strong> — 평시(인원 카운팅·추적)와 화재 발생 시(멀티모달 화재 판단 → 알림 → 요구조자 탐지 → 상태 판별 → 거리 추정)의 두 갈래로 동작하는 통합 SW 설계.</li>
         <li><strong>음성 기반 멀티모달 요구조자 탐지</strong> — OpenAI Whisper 기반 음성 인식으로 "도와주세요" 등 한국어 긴급 키워드를 감지하면 YOLO 영상 분석을 조건부 활성화하는 이중 검증 구조로, 시각적으로 가려진 요구조자까지 탐지.</li>
         <li><strong>요구조자 상태 인식</strong> — MVD(Masked Video Distillation) 기반 행동 인식으로 실신·전도·배회 등 상태를 연속 프레임의 시간적 맥락으로 판별, 기존 객체 탐지의 자세 오탐 문제 해소.</li>
         <li><strong>실내 거리(위치) 추정</strong> — SAM 세그멘테이션과 단안 깊이 추정 모델(DepthPro)을 결합하여 사람 영역을 정밀 추출하고 거리를 회귀, 배경 노이즈를 효과적으로 제거.</li>
