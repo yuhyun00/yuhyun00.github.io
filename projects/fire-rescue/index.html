@@ -73,13 +73,13 @@
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li><strong>기술조사·설계 (2023)</strong> — 사람 탐지(YOLOv5/YOLOX/YOLOv6, SWIN Transformer, DETR, CO-DETR, DINO)와 대규모 군중 수 계산(P2PNet, FIDTM, MAN, TAFNet, MAFNet 등) 기법을 CNN/Transformer 구조로 분류 조사하고, RGB 및 RGB-IR(Thermal) 데이터셋(KAIST Multispectral, FLIR Thermal, RGBT-CC, ShanghaiTech 등)을 정리해 재난 환경 일반화 방향 설계.</li>
-        <li><strong>저조도·악조건 탐지 (2024 → 2025)</strong> — 연기·암전·저대비 환경에서의 고신뢰 사람 탐지를 위해 Attention 중심 실시간 탐지 모델(YOLOv12)을 도입하고 저조도 전용 데이터셋(ExDark)으로 학습·평가.</li>
-        <li><strong>화재 및 요구조자 탐지 통합 파이프라인 (2025)</strong> — 평시(인원 카운팅·추적)와 화재 발생 시(멀티모달 화재 판단 → 알림 → 요구조자 탐지 → 상태 판별 → 거리 추정)의 두 갈래로 동작하는 통합 SW 설계.</li>
-        <li><strong>음성 기반 멀티모달 요구조자 탐지</strong> — OpenAI Whisper 기반 음성 인식으로 "도와주세요" 등 한국어 긴급 키워드를 감지하면 YOLO 영상 분석을 조건부 활성화하는 이중 검증 구조로, 시각적으로 가려진 요구조자까지 탐지.</li>
-        <li><strong>요구조자 상태 인식</strong> — MVD(Masked Video Distillation) 기반 행동 인식으로 실신·전도·배회 등 상태를 연속 프레임의 시간적 맥락으로 판별, 기존 객체 탐지의 자세 오탐 문제 해소.</li>
-        <li><strong>실내 거리(위치) 추정</strong> — SAM 세그멘테이션과 단안 깊이 추정 모델(DepthPro)을 결합하여 사람 영역을 정밀 추출하고 거리를 회귀, 배경 노이즈를 효과적으로 제거.</li>
-        <li><strong>In/Out 인원 카운팅 및 추적</strong> — YOLOv12 + ByteTrack(칼만 필터·헝가리안 알고리즘)으로 경계선 교차 기반 IN/OUT 카운팅 수행, 화재 발생 시 공간 내 현존 인원 추론에 활용.</li>
+        <li><strong>기술조사·설계 (2023)</strong> — 사람 탐지(YOLO 계열·DETR 계열 등)와 대규모 군중 수 계산 기법을 CNN/Transformer 구조로 분류 조사하고, RGB 및 RGB-IR(Thermal) 데이터셋을 정리해 재난 환경 일반화 방향 설계.</li>
+        <li><strong>저조도·악조건 탐지 (2024 → 2025)</strong> — 연기·암전·저대비 환경에서의 고신뢰 사람 탐지를 위해 실시간 탐지 모델(YOLO 계열)을 저조도 전용 데이터셋으로 학습·평가.</li>
+        <li><strong>화재 및 요구조자 탐지 통합 파이프라인 (2025)</strong> — 평시(인원 카운팅·추적)와 화재 발생 시(화재 판단 → 알림 → 요구조자 탐지 → 상태 판별 → 거리 추정)로 동작하는 통합 SW 설계.</li>
+        <li><strong>음성 기반 멀티모달 요구조자 탐지</strong> — 음성 인식(Whisper)으로 긴급 키워드를 감지해 영상 분석을 보조함으로써, 시각적으로 가려진 요구조자까지 탐지.</li>
+        <li><strong>요구조자 상태 인식</strong> — 영상 기반 행동 인식(MVD 등)으로 실신·전도·배회 등 상태를 판별하여 기존 객체 탐지의 자세 오탐 문제를 보완.</li>
+        <li><strong>실내 거리(위치) 추정</strong> — 세그멘테이션(SAM)과 단안 깊이 추정(DepthPro)을 결합하고 배경 노이즈를 제거해 사람까지의 거리를 추정.</li>
+        <li><strong>In/Out 인원 카운팅 및 추적</strong> — 탐지·추적(YOLO + ByteTrack)으로 경계선 교차 기반 IN/OUT 카운팅을 수행하고, 화재 발생 시 공간 내 현존 인원 추론에 활용.</li>
       </ul>
 
       <div class="detail-aside">
@@ -112,7 +112,7 @@
         3차년도(2025) 기준 주요 정량 성과는 다음과 같다.
       </p>
       <ul>
-        <li><strong>화재(불꽃/연기) 인지</strong> — 통합 데이터셋(D-Fire, DFS-Fire-Dataset, AI-Hub 등)으로 YOLOv12(Area Attention·R-ELAN) 학습, 전체 mAP50 0.908(화재 0.921, 연기 0.895)로 목표 0.85 초과 달성.</li>
+        <li><strong>화재(불꽃/연기) 인지</strong> — 화재·연기 통합 데이터셋으로 YOLO 계열 모델을 학습, 전체 mAP50 0.908(화재 0.921, 연기 0.895)로 목표 0.85 초과 달성.</li>
         <li><strong>저조도 사람 탐지</strong> — ExDark 데이터셋에서 mAP50 0.889 달성, 기존 EMV-YOLO(0.782) 대비 약 13.68% 향상.</li>
         <li><strong>In/Out 인원 카운팅</strong> — 6개 테스트 영상에서 100% Accuracy 달성(기존 연구 91% 대비 9%p 향상, 목표 60% 초과).</li>
         <li><strong>요구조자 상태 인식</strong> — AI-Hub 「지하철 역사 내 CCTV 이상행동 영상」 기반 실신·전도·배회 3종 분류에서 94.7% Accuracy 달성(목표 mAP50 0.75 이상).</li>

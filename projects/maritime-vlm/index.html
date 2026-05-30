@@ -73,12 +73,12 @@
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li><strong>항해술 &amp; 법령 Text QA</strong> — LLaMA-3.1 8B를 Pre-Training(PT)으로 해양 특화 지식을 학습하고, Supervised Fine-Tuning(SFT)으로 해양 특화 질의응답을 학습. DeepSpeed Stage3로 파라미터·optimizer state·gradient를 메모리 효율적으로 분산 학습.</li>
-        <li><strong>전방 카메라 항해 동영상 Video QA</strong> — LLaMA-VID(Base LLM: Vicuna-7B-v1.5)를 채택. 입력 동영상을 5 FPS로 프레임 추출(예: 15초 → 75프레임)하여 SFT로 항해 동영상 특화 비디오 질의응답을 학습.</li>
-        <li><strong>상황맵(Situation Map) Visual QA</strong> — 동일한 LLaMA-VID 기반으로 상황맵 동영상/이미지에 대한 질의응답을 SFT로 학습, 선박 위치·항로·충돌 위험 등을 추론.</li>
-        <li><strong>데이터셋 전처리 파이프라인</strong> — 제공받은 원시 Text/QA를 JSON으로 변환하고, GPT를 활용해 무분별한 원시 텍스트를 학습 가능한 의미 있는 Corpus로 변환. 학습에 저해되는(표·그림 참조 등 답변 불가) QA는 GPT로 필터링. Video QA는 답변 없는 쌍·특수문자·유니코드를 제거해 ShareGPT 포맷으로 정리.</li>
-        <li><strong>멀티모달 종합 추론 시스템</strong> — 항해 동영상 MLLM, 상황맵 MLLM, 항해술·법률 LLM의 출력을 조합하고 Prompt Engineering을 적용해 최종 답변을 도출. MLLM이 인식한 물리적 상황에 LLM이 항해술·법령 정보를 더해 명확한 가이드라인을 생성하고, 안전 이슈의 심각도를 3단계로 분류.</li>
-        <li><strong>실시간 연동 데모 프로토타입</strong> — CCTV/카메라(해상 동영상)와 상황맵 서버 영상을 RTSP/RTMP로 수신, Buffer 저장 후 지정 Frame Rate로 GPU 메모리에 탑재해 추론. 전방 카메라·상황맵·항해 법령 입력을 종합하는 UI를 구성.</li>
+        <li><strong>항해술 &amp; 법령 Text QA</strong> — 해양 도메인 특화 LLM(LLaMA-3.1 8B)을 사전학습(PT)·미세조정(SFT)하여 항해술·법령 질의응답을 학습.</li>
+        <li><strong>전방 카메라 항해 동영상 Video QA</strong> — Video-LLM(LLaMA-VID 계열)을 채택해 전방 카메라 항해 동영상에 특화된 비디오 질의응답을 학습.</li>
+        <li><strong>상황맵(Situation Map) Visual QA</strong> — 동일 계열 Video-LLM으로 상황맵 영상/이미지에 대한 질의응답을 학습하여 선박 위치·항로·충돌 위험 등을 추론.</li>
+        <li><strong>데이터셋 전처리</strong> — 원시 Text/QA를 학습 가능한 형태로 정제하고, GPT를 활용해 학습에 부적합한 데이터를 필터링.</li>
+        <li><strong>멀티모달 종합 추론 시스템</strong> — 항해 동영상·상황맵·항해술/법령 모델의 출력을 Prompt Engineering으로 결합해, 물리적 상황 인식에 항해술·법령 지식을 더한 가이드라인을 생성하고 안전 이슈의 심각도를 3단계로 분류.</li>
+        <li><strong>실시간 연동 데모 프로토타입</strong> — 해상 영상과 상황맵 서버 영상을 실시간으로 수신해 추론하고, 전방 카메라·상황맵·항해 법령 입력을 종합하는 데모 UI를 구성.</li>
       </ul>
 
       <div class="detail-aside">
@@ -91,16 +91,13 @@
     <section class="detail-section">
       <h3>Methods &amp; Tech</h3>
       <div class="tech-tags">
-        <span class="tag">LLaMA-3.1 8B</span>
-        <span class="tag">LLaMA-VID</span>
-        <span class="tag">Vicuna-7B-v1.5</span>
+        <span class="tag">LLaMA 계열 LLM</span>
+        <span class="tag">LLaMA-VID (Video-LLM)</span>
         <span class="tag">Vision-LLM (MLLM)</span>
         <span class="tag">Pre-Training / SFT</span>
-        <span class="tag">DeepSpeed Stage3</span>
         <span class="tag">Prompt Engineering</span>
         <span class="tag">GPT 데이터 전처리</span>
         <span class="tag">Multimodal Reasoning</span>
-        <span class="tag">RTSP/RTMP</span>
       </div>
     </section>
 

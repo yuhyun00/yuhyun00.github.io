@@ -58,15 +58,13 @@
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li>대규모 RGB pre-train과 소규모 RGB-Depth 쌍만으로 Depth 인식 성능을 끌어올리는 cross-modal knowledge distillation 방법론 설계</li>
-        <li>I3D 백본을 사용해 RGB Video와 Depth Video 각각의 feature를 추출하고, 두 feature 사이의 alignment를 MSE Loss로 정렬</li>
-        <li>두 feature를 섞은 mixed feature를 포함해 총 3개 feature의 logit을 구성하고, uni-modal logit을 multi-modal logit에 MSE Loss로 최적화</li>
-        <li>각 logit은 cross-entropy Loss로 함께 최적화하여 단일·다중 모달 모두에서 일관된 분류 성능 확보</li>
-        <li>추론 시 RGB uni-modal, Depth uni-modal, RGB-Depth multi-modal 중 어떤 입력이 들어와도 동작하도록 설계 (missing modality 대응)</li>
+        <li>대규모 RGB 사전학습과 소규모 RGB-Depth 쌍만으로 Depth 인식 성능을 끌어올리는 cross-modal knowledge distillation 방법론 설계</li>
+        <li>I3D 백본으로 RGB와 Depth 각각의 영상 특징을 추출해 정렬하고, 두 모달리티를 섞은 표현까지 함께 학습하여 단일·다중 모달 모두에서 일관된 분류 성능을 확보</li>
+        <li>추론 시 RGB·Depth·RGB-Depth 중 어떤 입력이 들어와도 동작하도록 설계 (missing modality 대응)</li>
         <li>대규모 RGB 데이터셋(Kinetics 400)과 RGB+D 데이터셋(Toyota Smarthome)을 활용한 학습·평가</li>
       </ul>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;학습 단계 구조도: RGB/Depth 백본, mixed feature, MSE 및 cross-entropy Loss 구성&gt; <span style="opacity:.7">(출처: 충대병원_행동인식.pptx.txt)</span></p>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;학습 단계 구조도: RGB·Depth 특징 추출 및 cross-modal distillation 구성&gt; <span style="opacity:.7">(출처: 충대병원_행동인식.pptx.txt)</span></p>
 
       <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;추론 단계 구조도: RGB·Depth·multi-modal 어떤 입력이든 추론 가능한 모델 구성&gt; <span style="opacity:.7">(출처: 충대병원_행동인식.pptx.txt)</span></p>
 

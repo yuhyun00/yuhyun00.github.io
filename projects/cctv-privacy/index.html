@@ -67,15 +67,14 @@
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li><strong>다해상도 강인 객체·얼굴 탐지</strong> — 다중 스케일 특징 표현(feature gathering / feature blending)을 활용하는 MSConv와, 샘플 재분배(Sample Redistribution)·계산 재분배(Computation Redistribution) 전략으로 효율-정확도 균형을 맞춘 SCRFD를 도입하여 다양한 해상도에서 얼굴을 탐지.</li>
-        <li><strong>밀집·가림 환경 객체 추적</strong> — 낮은 신뢰도의 탐지까지 모두 연관시키는 ByteTrack을 채택하여, 사람이 밀집해 객체가 가려지는 CCTV 환경에서도 추적을 유지.</li>
-        <li><strong>차량번호판 탐지</strong> — YOLOX 기반으로 번호판 탐지 모델을 학습·검증.</li>
-        <li><strong>환경 변화에 강인한 고도화</strong> — ImageNet-C 기반 노이즈(모션/카메라 블러, 눈, 안개 등 15종)를 학습 데이터에 적용한 견고성 강화, MSRCR·PyramidBox·Soft-NMS를 결합한 저조도(SFDELC) 탐지 적용 연구.</li>
-        <li><strong>탐지 모델 전환</strong> — 앵커-프리 YOLOX에서 anchor-aided training(AAT)·RepBi-PAN(BiC, SimCSPSPPF)을 적용한 YOLOv6 v3.0으로 전환하여 정확도와 실시간성 동시 확보.</li>
-        <li><strong>추적 모델 고도화</strong> — 카메라 움직임 보정(CMC, affine + GMC, RANSAC)과 너비·높이 직접 추정 칼만 필터를 사용하는 BoT-SORT로 동적/정적 카메라 환경의 성능 저하에 대응.</li>
+        <li><strong>다해상도 강인 얼굴 탐지</strong> — 다양한 해상도에서 효율과 정확도의 균형을 갖춘 얼굴 탐지 모델(SCRFD 등)을 도입하여 강인하게 얼굴을 탐지.</li>
+        <li><strong>밀집·가림 환경 객체 추적</strong> — 낮은 신뢰도의 탐지까지 연관시키는 추적기(ByteTrack)를 채택하여, 사람이 밀집해 객체가 가려지는 CCTV 환경에서도 추적을 유지.</li>
+        <li><strong>차량번호판 탐지</strong> — YOLO 계열 탐지기로 번호판 탐지 모델을 학습·검증.</li>
+        <li><strong>환경 변화에 강인한 고도화</strong> — 모션/카메라 블러·눈·안개 등 다양한 노이즈(ImageNet-C 기반 15종)를 학습 데이터에 반영하고 저조도 탐지를 적용해 실제 운용 환경에 대한 견고성을 강화.</li>
+        <li><strong>탐지·추적 모델 고도화</strong> — 탐지기를 YOLO 계열 최신 버전으로 전환해 정확도와 실시간성을 함께 확보하고, 카메라 움직임 보정을 포함한 추적기(BoT-SORT)로 동적·정적 카메라 환경의 성능 저하에 대응.</li>
       </ul>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;MSConv의 다중 스케일 특징 처리(feature gathering / feature blending) 구조도&gt; <span style="opacity:.7">(출처: 2022_2차년도_연차보고서_한밭대학교.hwp)</span></p>
+      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;다중 스케일 얼굴 탐지 구조도&gt; <span style="opacity:.7">(출처: 2022_2차년도_연차보고서_한밭대학교.hwp)</span></p>
 
       <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;ByteTrack의 모든 탐지 박스 연관 방식 예시(가림 상황에서의 추적 유지 비교)&gt; <span style="opacity:.7">(출처: 2022_2차년도_연차보고서_한밭대학교.hwp)</span></p>
 
@@ -91,15 +90,12 @@
       <div class="tech-tags">
         <span class="tag">SCRFD</span>
         <span class="tag">RetinaFace</span>
-        <span class="tag">MSConv</span>
-        <span class="tag">YOLOX</span>
-        <span class="tag">YOLOv6 v3.0</span>
+        <span class="tag">YOLO 계열</span>
         <span class="tag">ByteTrack</span>
         <span class="tag">BoT-SORT</span>
         <span class="tag">WIDER Face</span>
-        <span class="tag">ImageNet-C</span>
-        <span class="tag">Soft-NMS</span>
-        <span class="tag">Kalman Filter</span>
+        <span class="tag">Robustness Augmentation</span>
+        <span class="tag">Low-light Detection</span>
       </div>
     </section>
 

@@ -80,9 +80,8 @@
         <li>흥일기업 제조시설 내에 상용 협동로봇 팔과 RGB-D 카메라, 턴테이블을 설치하여 연구용 데모가 아닌 산업 현장 재현성을 고려한 수집 환경 구축</li>
         <li>5종의 용접 방식(Butt/Edge/Lap/Tee/Corner)과 6종의 모재 형태·재질·두께·크기를 고려한 1,500개 모재 촬영 시나리오 설계로 데이터 편향 예방</li>
         <li>모재 중심 9개 방향(25˚, 45˚, 수직)에서 RGB·Depth 이미지를 취득하고, 동시에 로봇 관절 좌표 등 티칭 데이터와 수집환경 메타데이터를 별도 수집</li>
-        <li>Python 기반으로 1개 모재당 9장의 Depth 이미지를 정합하여 PCD(Point Cloud Data) 생성, 정합 오류 검수 후 촬영 테이블·노이즈 제거 정제 수행</li>
-        <li>2D 가공: RGB 이미지 내 가용접 지점(Point)과 본용접 구간(Polyline)을 라벨링하고 카메라·카테고리 속성을 병합하여 JSON 산출</li>
-        <li>3D 가공: PCD를 본용접 구간/모재/기타 영역으로 구분(index 0/1/2)하여 3D Segmentation 라벨링 후 (x, y, z, r, g, b, Index) CSV로 추출</li>
+        <li>1개 모재당 9장의 Depth 영상을 정합해 PCD(Point Cloud Data)를 생성하고, 정합 오류 검수와 노이즈 제거 정제를 거쳐 데이터 품질을 확보</li>
+        <li>가용접 지점(Point)·본용접 구간(Polyline)에 대한 2D 라벨링과 본용접 구간 중심의 3D Segmentation 라벨링을 수행하여 멀티모달 학습용 데이터로 가공</li>
         <li>YOLOv12 기반 2D Object Detection 및 PointNeXt 기반 3D Segmentation으로 구축 데이터의 AI 학습 유효성 검증 수행</li>
       </ul>
 
