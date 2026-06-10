@@ -66,7 +66,10 @@
         <strong>2025년(3차년도)</strong>에는 화재 인지와 요구조자 탐지를 하나로 묶은 통합 파이프라인을 구축하고,
         음성 기반 멀티모달 탐지, 요구조자 상태 인식, 거리 추정, 인원 카운팅 등으로 기술을 고도화했다.
       </p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;요구조자 인지 기술과 대심도 재난 대응 복합훈련장의 연구 관련성 개념도&gt; <span style="opacity:.7">(출처: 1차년도_대심도_기술조사_분석_설계_보고서.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig1.jpg" alt="대심도 재난 대응 복합훈련장 개념도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">요구조자 인지 기술이 적용되는 대심도 철도시설(GTX 등) 재난 대응 복합훈련장 개념도</figcaption>
+      </figure>
     </section>
 
     <!-- ============= APPROACH ============= -->
@@ -118,9 +121,18 @@
         <li><strong>요구조자 상태 인식</strong> — AI-Hub 「지하철 역사 내 CCTV 이상행동 영상」 기반 실신·전도·배회 3종 분류에서 94.7% Accuracy 달성(목표 mAP50 0.75 이상).</li>
         <li><strong>거리 추정</strong> — SAM + DepthPro 결합으로 전체 거리 MAE 0.484m, 최종 성능 0.9708m 확보(5m 0.049m ~ 25m 0.872m).</li>
       </ul>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;YOLOv12 기반 연기 및 화재 탐지 결과 예시&gt; <span style="opacity:.7">(출처: 3차년도_1__수정_연차보고서_v2.hwpx)</span></p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;음성 기반 멀티모달 요구조자 탐지 알고리즘 개요도 및 작동 결과&gt; <span style="opacity:.7">(출처: 3차년도_1__수정_연차보고서_v2.hwpx)</span></p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;실신·전도·배회 상태 인식(MVD) 예측 샘플&gt; <span style="opacity:.7">(출처: 3차년도_1__수정_연차보고서_v2.hwpx)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig2.png" alt="YOLOv12 연기·화재 탐지 결과" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">YOLOv12 기반 연기 및 화재 탐지 결과 예시 (연기·불꽃 바운딩 박스와 신뢰도 표시)</figcaption>
+      </figure>
+      <figure style="margin:24px 0;">
+        <img src="fig3.png" alt="음성 기반 멀티모달 요구조자 탐지 알고리즘" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">음성 기반 멀티모달 요구조자 탐지 알고리즘 개요도 (음성 인식 네트워크 + 탐지 네트워크) 및 작동 결과</figcaption>
+      </figure>
+      <figure style="margin:24px 0;">
+        <img src="fig4.png" alt="실신·전도·배회 상태 인식 예측 샘플" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">행동 인식(MVD) 기반 요구조자 상태 인식 예측 샘플 (실신·전도·배회 분류)</figcaption>
+      </figure>
       <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;SAM + DepthPro 기반 실내 거리 추정 추론 결과&gt; <span style="opacity:.7">(출처: 3차년도_1__수정_연차보고서_v2.hwpx)</span></p>
     </section>
 

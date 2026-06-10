@@ -66,7 +66,10 @@
         부설 선박해양플랜트연구소(KRISO)이다.
       </p>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;ANAS 전체 시스템 개요도 (데이터 수집 → 기반 모델 → 멀티모달 종합 추론 → 항해 지원)&gt; <span style="opacity:.7">(출처: KRISO_최종보고서_20241213_v1.0_수정완료본.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig1.jpg" alt="ANAS 전체 시스템 개요도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">ANAS 전체 시스템 개요도 — 데이터 엔지니어링(수집·라벨링·샘플링)에서 Text QA·Video QA 기반 모델로 이어지는 구조</figcaption>
+      </figure>
     </section>
 
     <!-- ============= APPROACH ============= -->
@@ -122,11 +125,20 @@
         추론이 신뢰도 높은 정보 제공과 안전한 의사결정 지원에 유효함을 PoC로 입증하였다.
       </p>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;Text QA 학습 파이프라인 구성도 (PT → SFT, LLaMA-3.1 8B)&gt; <span style="opacity:.7">(출처: 크리소_20241031_ver3.pptx)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig2.png" alt="Text QA 학습 파이프라인" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">Text QA 학습 파이프라인 — 1단계 Continue Pre-Training, 2단계 Instruction Fine-Tuning(SFT)으로 구성된 도메인 특화 LLM 학습</figcaption>
+      </figure>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;멀티모달 종합 추론 시스템 구성도 (Video QA MLLM + 상황맵 QA MLLM + 항해술·법률 LLM 조합)&gt; <span style="opacity:.7">(출처: 크리소_20241031_ver3.pptx)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig3.jpg" alt="멀티모달 종합 추론 시스템 구성도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">멀티모달 종합 추론 시스템 — 전방 카메라·상황맵 Visual QA MLLM과 항해술·법령 Text QA LLM 출력을 Prompt Engineering으로 결합</figcaption>
+      </figure>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;항해 동영상 / 상황맵 Video QA 추론 결과 정성 예시&gt; <span style="opacity:.7">(출처: 크리소_20241031_ver3.pptx)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig4.png" alt="Video QA 추론 결과 정성 예시" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">상황맵 Video QA 추론 결과 정성 예시 — 해상 교통 혼잡도 질의에 대한 KRISO-MLLM 응답</figcaption>
+      </figure>
     </section>
 
     <!-- ============= STATUS ============= -->

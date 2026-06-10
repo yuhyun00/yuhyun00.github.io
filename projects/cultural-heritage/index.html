@@ -64,7 +64,10 @@
       <p>문화유산 데이터는 잘 정제된 공개 데이터셋과 달리, 소수 클래스에 데이터가 집중되는 극단적인 긴꼬리(Long-tail) 분포를 가지며 상위·하위 분류로 이루어진 계층적 구조를 동시에 갖는다는 점에서 차별화된다. 이러한 특성을 효과적으로 다루기 위해 긴꼬리 분포에 강인하면서 계층 정보를 활용하는 학습 전략과, 학습되지 않은 미상 문화유산에 대응하는 제로샷(Zero-shot)·퓨샷(Few-shot) 방법론을 연구하였다.</p>
       <p>과제는 3개년에 걸쳐 발전하였다. 2023년(v1.0)에는 e-museum 데이터(5개 상위·25개 하위 클래스)를 대상으로 긴꼬리·계층 분류 알고리즘과 분류 테스트베드를 구축하였다. 2024년(v2.0)에는 데이터셋을 205개 세부 클래스로 확장하고 ML-Decoder 기반 통합 분류기를 적용하는 한편, Vision-LLM 기반 문화유산 주제 검색 기능을 새롭게 추가하였다. 2025년(v3.0)에는 국립중앙박물관 기증 데이터(185개 세부 클래스, 최대 4계층)로 전환하고, 멀티헤드 어텐션 기반 계층적 지식 증류로 분류 정확도를 크게 끌어올렸으며 주제 검색에 Qwen2.5-VL 등 최신 Vision-LLM을 도입하여 디지털 문화유산 고속 브라우징을 지원하는 분류/검색 테스트베드로 고도화하였다.</p>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;문화유산 분류 시스템 개요도&gt; <span style="opacity:.7">(출처: 2023_문화유산_최종보고서.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig1.jpg" alt="문화유산 분류 시스템 개요도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">문화유산 촬영 영상에서 객체를 인식·분류하여 관련 문화재를 추천하는 분류 시스템 개요도</figcaption>
+      </figure>
     </section>
 
     <!-- ============= APPROACH ============= -->
@@ -83,11 +86,20 @@
         문화유산 분류/검색 알고리즘 연구 및 개발, 데이터셋 구축, 테스트베드 구현에 참여.
       </div>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;긴꼬리·계층 정보를 활용한 분류 학습 전략 구조도&gt; <span style="opacity:.7">(출처: 2023_문화유산_최종보고서.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig2.png" alt="긴꼬리·계층 분류 학습 전략 구조도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">균등·재균형 샘플링과 공유 백본·디코더, 에폭별 가중치 손실을 결합한 긴꼬리·계층 분류 학습 전략 구조도</figcaption>
+      </figure>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;계층적 지식 증류 기반 분류 알고리즘 파이프라인&gt; <span style="opacity:.7">(출처: 2025_문화유산_분류_결과보고서.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig3.jpg" alt="계층적 지식 증류 기반 분류 알고리즘 파이프라인" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">공유 백본과 단계별 분류기를 지식 증류(KD)로 연결하고 누락 라벨 처리를 포함한 계층적 지식 증류 분류 파이프라인</figcaption>
+      </figure>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;Vision-LLM + Sentence Embedding 기반 문화유산 주제 검색 시스템 개요도&gt; <span style="opacity:.7">(출처: 2024_문화유산_분류_결과보고서.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig4.png" alt="Vision-LLM 기반 문화유산 주제 검색 시스템 개요도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">Vision-LLM으로 이미지를 텍스트로 변환하고 Sentence Embedding 간 코사인 유사도로 검색하는 문화유산 주제 검색 시스템 개요도</figcaption>
+      </figure>
     </section>
 
     <!-- ============= TECH STACK ============= -->
@@ -111,7 +123,10 @@
       <p>분류 알고리즘은 검증 데이터셋 기준 v2.0에서 Accuracy 85.85%(목표 80% 이상), v3.0에서 Accuracy 96.67%(목표 83% 이상)를 달성하였다. v1.0에서는 제안 학습 전략을 적용한 모델이 베이스라인 대비 학습 데이터가 적은 상위 클래스에서 성능이 월등히 높고, 상위 클래스 오분류가 줄어 안정성이 향상됨을 정성적으로 확인하였다.</p>
       <p>문화유산 주제 검색은 회화 120종·388장(12개 세부 클래스) 데이터셋에서 v2.0 mP@1 66.67%(목표 62% 이상), v3.0 mP@1 79.17%(목표 70% 이상)를 기록하여 Vision-LLM 기반 멀티모달 접근이 시각적 특징과 의미론적 맥락을 동시에 고려하는 데 효과적임을 실증하였다.</p>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;베이스라인 vs 제안 학습 전략의 클래스별 분류 성능 비교 결과&gt; <span style="opacity:.7">(출처: 2023_문화유산_최종보고서.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig5.png" alt="베이스라인 vs 제안 학습 전략 클래스별 성능 비교" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">클래스별 정확도(%)에 대한 베이스라인 대비 제안 학습 전략(Ours)의 분류 성능 비교 결과</figcaption>
+      </figure>
     </section>
 
     <!-- ============= STATUS ============= -->

@@ -70,7 +70,10 @@
         후속 기술개발을 위한 학습·검증용 자원을 제공하는 것을 목표로 합니다.
       </p>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;데이터 수집 환경(상용 협동로봇 팔 + RGB-D 카메라 + 턴테이블) 셋업 구성도&gt; <span style="opacity:.7">(출처: 36.용접_로봇_행동_생성_데이터_최종평가회_발표자료.pptx)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig1.jpg" alt="데이터 수집 환경: 상용 협동로봇 팔, RGB-D 카메라, 턴테이블 셋업" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">데이터 수집 환경 — 턴테이블 기반 모재 촬영 셋업과 RGB-D 카메라 구성</figcaption>
+      </figure>
     </section>
 
     <!-- ============= APPROACH ============= -->
@@ -92,9 +95,15 @@
         수행 및 알고리즘 개발에 참여하였습니다.
       </div>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;9방향 RGB-D 촬영 → Depth 정합 PCD 생성 → 2D/3D 라벨링으로 이어지는 데이터 구축 파이프라인&gt; <span style="opacity:.7">(출처: 36.용접_로봇_행동_생성_데이터_최종평가회_발표자료.pptx)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig2.png" alt="데이터 구축 파이프라인 및 모델 구조도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">9방향 RGB-D 촬영 → Depth 정합 PCD 생성 → 2D/3D 라벨링으로 이어지는 데이터 구축·학습 파이프라인</figcaption>
+      </figure>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;구축 데이터 예시: RGB 이미지·Depth 이미지·PCD·2D 라벨링·3D 라벨링 샘플&gt; <span style="opacity:.7">(출처: 36.용접_로봇_행동_생성_데이터_최종평가회_발표자료.pptx)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig3.png" alt="구축 데이터 예시: 다방향 RGB-D 및 Depth 샘플" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">구축 데이터 예시 — 9방향에서 취득한 RGB·Depth 영상 샘플</figcaption>
+      </figure>
     </section>
 
     <!-- ============= TECH STACK ============= -->
@@ -133,7 +142,10 @@
         Segmentation 95.8%로 모든 품질지표를 충족하였습니다.
       </p>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;YOLOv12 2D 검출 및 PointNeXt 3D Segmentation 정성적 결과 예시&gt; <span style="opacity:.7">(출처: 36.용접_로봇_행동_생성_데이터_최종평가회_발표자료.pptx)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig4.png" alt="PointNeXt 기반 3D Segmentation 정성적 결과" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">PointNeXt 기반 3D Segmentation 정성적 결과 — 본용접 구간 분할 예시</figcaption>
+      </figure>
 
       <p>
         응용 모델로는 구축 데이터로 학습한 3D Point Cloud Segmentation 모델의

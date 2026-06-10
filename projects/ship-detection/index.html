@@ -86,8 +86,14 @@
         학습 데이터는 AI-Hub ‘해상객체 이미지’ 데이터셋을 기반으로 한다. 원본은 1,500시간 분량의 동영상 데이터이며, 이를 Bounding Box·Polygon으로 가공한 540만 장의 이미지(선박 객체 약 100만 개)로 구성된다.
         본 과업에서는 그중 ‘남해_여수항_2구역’의 선박 데이터를 선별하여 사용하였다.
       </p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;해상객체 이미지 데이터 Sample image 및 Annotation 예시&gt; <span style="opacity:.7">(출처: KRISO_최종보고서_1206.hwp)</span></p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;8개 선수 방향 라벨링 예시(상단~좌상단)&gt; <span style="opacity:.7">(출처: KRISO_최종보고서_1206.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig1.jpg" alt="해상객체 이미지 데이터 Sample image 및 Annotation 예시" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">해상객체 이미지 데이터 Sample image 및 Annotation(Bounding Box) 예시</figcaption>
+      </figure>
+      <figure style="margin:24px 0;">
+        <img src="fig2.jpg" alt="8개 선수 방향 라벨링 예시" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">8개 선수 방향(상단~좌상단) 라벨링 예시</figcaption>
+      </figure>
     </section>
 
     <!-- ============= METHODS & TECH ============= -->
@@ -106,8 +112,14 @@
         <span class="tag">Multimodal (LiDAR / IR / RGB)</span>
         <span class="tag">Python</span>
       </div>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;YOLOX 탐지 결과(Panorama 영상 기반 Ship Detection) 정성적 예시&gt; <span style="opacity:.7">(출처: KRISO_최종보고서_1206.hwp)</span></p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;멀티모달(LiDAR/IR/RGB) feature fusion 기반 선박 인식 Overview 구성도&gt; <span style="opacity:.7">(출처: KRISO_최종보고서_1206.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig3.jpg" alt="YOLOX Panorama 영상 기반 선박 탐지 결과" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">YOLOX 탐지 결과 — Panorama 영상 기반 Ship Detection 정성적 예시</figcaption>
+      </figure>
+      <figure style="margin:24px 0;">
+        <img src="fig4.jpg" alt="멀티모달 feature fusion 기반 선박 인식 Overview 구성도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">멀티모달(LiDAR/IR/RGB) feature fusion 기반 선박 인식 Overview 구성도</figcaption>
+      </figure>
     </section>
 
     <!-- ============= RESULTS ============= -->
@@ -121,7 +133,10 @@
         CNN 기반 모델의 기본 성능은 30~35% 수준이었으며, Augmentation·Focal Loss·Label Smoothing 등을 적용하여 약 <strong>44%</strong>까지 향상시켰다.
         추가 데이터 보강 및 다중 센서 활용 등 방법론적 개선이 후속 과제로 도출되었다.
       </p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;SEResNet 기반 선박 선수 방향 추정 정성적 결과 예시&gt; <span style="opacity:.7">(출처: KRISO_최종보고서_1206.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig5.jpg" alt="SEResNet 기반 선박 선수 방향 추정 정성적 결과" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">SEResNet 기반 선박 선수 방향 추정 정성적 결과 예시</figcaption>
+      </figure>
     </section>
 
     <!-- ============= STATUS ============= -->

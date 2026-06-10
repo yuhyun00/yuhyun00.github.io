@@ -53,7 +53,10 @@
       <p>비가시 환경(야간·안개·미세먼지·음영)에서는 교통사고와 범죄가 더 빈번하고 치명적이며, 효율적인 대응 또한 어렵다. 본 과제는 날씨와 주야간 등 주변 환경에 영향을 받지 않도록 가시광·근적외선·열화상의 다중대역 영상과 77GHz 밀리미터파 레이더 정보를 융합(퓨전 센싱)하고, AI 영상인식을 통해 차량·사람·동물·장애물을 구분하여 이동속도·위치·거리·좌표 정보를 확보하는 것을 목표로 한다.</p>
       <p>각 센서는 서로 다른 정보 특성을 가진다. 카메라 비전은 컬러를 인지하지만 거리 측정이 불가능하고 광량·악천후에 취약하며, 열화상은 외부 광원 없이 암흑에서도 동작하지만 색 정보를 얻지 못하고, 레이더는 정밀한 거리·속도 정보를 제공하지만 평면적인 객체 유무 판단에 가깝다. 이들을 통합 영상·AI 정보처리 융합 알고리즘으로 크로스체킹하여 단점을 상호 보완하고, 이를 바탕으로 교통사고 감시와 물피도주의 예방·대응을 효율화한다. 과제는 과학치안진흥센터 폴리스랩2.0 사업의 일환으로, (주)미루시스템즈를 주관기관으로 한국과학기술원(KAIST)·국립한밭대학교가 공동연구기관으로 참여하였다.</p>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;다중대역 퓨전 센싱 시스템 구성도 / 가시광·열화상·레이더 센서 융합 개념도&gt; <span style="opacity:.7">(출처: _물피도주_2024_연차보고서_최종_.hwp.txt)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig1.jpg" alt="다중대역 센서 융합 개념도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">다중대역 퓨전 센싱 개념도 — 가시광(RGB)·열화상 인코더를 주야간·악천후 등 장면별 융합 모듈로 결합</figcaption>
+      </figure>
     </section>
 
     <!-- ============= APPROACH ============= -->
@@ -68,9 +71,15 @@
         <li>AI 분석 기능을 임베디드 형태로 내장하여 별도 분석 서버 없이 경제적으로 현장에 적용 가능하도록 설계</li>
       </ul>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;피해 차량 ROI 지정 화면 예시&gt; <span style="opacity:.7">(출처: 0706_물피도주_데모_알고리즘_설명서.hwp.txt)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig2.jpg" alt="피해 차량 ROI 지정 화면" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">피해 차량 ROI 지정 화면 예시 — 영상에서 분석 대상 차량 영역을 박스로 선택</figcaption>
+      </figure>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;물피도주 탐지 알고리즘 작동 방식(광학 흐름 기반 흔들림 분석) 다이어그램&gt; <span style="opacity:.7">(출처: 0706_물피도주_데모_알고리즘_설명서.hwp.txt)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig3.jpg" alt="물피도주 탐지 알고리즘 작동 방식 다이어그램" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">물피도주 탐지 알고리즘 작동 방식 — 광학 흐름·깊이 추정·인스턴스 분할로 충돌 시점 차량 흔들림 분석</figcaption>
+      </figure>
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
@@ -105,7 +114,10 @@
       </ul>
       <p>연구개발비 집행 측면에서는 2024년 기준 한국과학기술원 집행률 90.83%, 국립한밭대학교 집행률 86.11%로 보고되었다.</p>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;물피도주 알고리즘 출력 결과 예시(충돌 탐지 정성 결과)&gt; <span style="opacity:.7">(출처: 0706_물피도주_데모_알고리즘_설명서.hwp.txt)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig4.jpg" alt="물피도주 알고리즘 출력 결과 예시" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">물피도주 알고리즘 출력 결과 예시 — 야간 주차장 영상에서 차량을 탐지한 정성 결과</figcaption>
+      </figure>
     </section>
 
     <!-- ============= STATUS ============= -->

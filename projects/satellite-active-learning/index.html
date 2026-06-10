@@ -56,8 +56,14 @@
       <p>
         특히 현실 데이터는 일부 다수 클래스(head)에 데이터가 집중되고 소수 클래스(tail)는 극소수만 존재하는 롱테일 분포를 가진다. 일반 객체 검출 데이터셋 VOC2012에서 전경 객체가 전체의 약 29.75%를 차지하는 반면, 위성 영상 데이터셋 iSAID에서는 2.85%에 불과할 만큼 위성 도메인에서 불균형이 더욱 극심하다. 본 연구는 데이터 전수 검사, 합성 데이터, 의사 라벨(pseudo-label), 표준 능동 학습 등 기존 접근법이 극단적 롱테일 환경에서 갖는 한계를 극복하기 위해, <strong>희귀 객체 중심의 이미지 검색 기반 능동적 학습법</strong>을 제안하는 것을 목표로 한다.
       </p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;기가픽셀 단위 초고해상도 위성 영상과 그 안에서 작게 나타나는 관심 객체 예시&gt; <span style="opacity:.7">(출처: 3년차_중견위성_최종보고서_260319.hwp)</span></p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;위성 영상 데이터셋의 롱테일 클래스 분포(head/tail) 그래프&gt; <span style="opacity:.7">(출처: 1년차___중견연구_유형1___연차보고서_서식_2024_eRND_.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig1.jpg" alt="기가픽셀 초고해상도 위성 영상과 작은 관심 객체" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">기가픽셀 단위 초고해상도 위성 영상과 그 안에서 작게 나타나는 관심 객체 예시</figcaption>
+      </figure>
+      <figure style="margin:24px 0;">
+        <img src="fig2.png" alt="롱테일 클래스 분포 그래프" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">위성 영상 데이터셋의 롱테일 클래스 분포(head/tail) 그래프</figcaption>
+      </figure>
     </section>
 
     <!-- ============= APPROACH ============= -->
@@ -93,8 +99,14 @@
         <span class="tag">DIOR / iNaturalist2017</span>
         <span class="tag">Google Maps Tile API</span>
       </div>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;이미지 검색 기반 능동적 학습법 전체 파이프라인 구성도&gt; <span style="opacity:.7">(출처: 1년차___중견연구_유형1___연차보고서_서식_2024_eRND_.hwp)</span></p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;DINOv3-ConvNeXt prototype 기반 pseudo-label 데이터 필터링 파이프라인&gt; <span style="opacity:.7">(출처: 3년차_중견위성_최종보고서_260319.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig3.png" alt="이미지 검색 기반 능동적 학습법 파이프라인" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">이미지 검색 기반 능동적 학습법 전체 파이프라인 구성도</figcaption>
+      </figure>
+      <figure style="margin:24px 0;">
+        <img src="fig4.png" alt="pseudo-label 데이터 필터링 파이프라인" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">DINOv3-ConvNeXt prototype 기반 pseudo-label 데이터 필터링 파이프라인</figcaption>
+      </figure>
     </section>
 
     <!-- ============= RESULTS ============= -->
@@ -103,7 +115,10 @@
       <p>
         <strong>1차년도(분류).</strong> iNaturalist2017에서 검색 기반 서브셋을 ResNet18로 학습한 결과, 10% 샘플링에서 능동 학습 SOTA 대비 전체 카테고리 평균 13.57% 성능 향상을 보였으며, 하위 빈도 카테고리에서 최대 65.75% 향상을 기록했다. 20% 샘플링에서도 평균 13.61% 향상, 하위 10% 카테고리에서 73.7% 향상으로 목표였던 5% 향상을 크게 상회했다. 정성적으로 기존 방법이 head 카테고리에 예측이 집중된 반면 제안 방법은 tail 카테고리까지 정확히 예측했다.
       </p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;CB-PPAL 5라운드 능동 학습 후 head/tail 클래스 분포 변화 비교&gt; <span style="opacity:.7">(출처: 2년차_위성_영상의_롱테일_문제를_위한_이미지_검색_기반_능동적_학습법_2025_IRIS_.hwp)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig5.png" alt="CB-PPAL 전후 head/tail 클래스 분포 변화" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">CB-PPAL 5라운드 능동 학습 후 head/tail 클래스 분포 변화 비교</figcaption>
+      </figure>
       <p>
         <strong>2차년도(검출).</strong> DIOR에서 RetinaNet으로 CB-PPAL을 적용해 초기 10%부터 매 라운드 10%씩 5라운드 학습한 결과, head 클래스('ship') 비중이 줄고 tail 클래스 비중이 뚜렷이 증가해 클래스 균형 샘플링 효과를 확인했다.
       </p>
