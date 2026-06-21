@@ -80,10 +80,25 @@
         <li>재투영 오차·RMSE 기반 정량 품질 등급 시스템과 커버리지 맵·오차 히트맵 시각화로 검증을 지원하고, GUI 환경에서 쉽게 사용 가능한 툴킷 형태로 패키징</li>
       </ul>
 
-      <figure style="margin:24px 0;">
-        <img src="fig1.png" alt="통합 캘리브레이션 툴킷 GUI" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
-        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">GUI 환경에서 센서 조합·타겟 검출·캘리브레이션을 수행하는 통합 툴킷 화면</figcaption>
-      </figure>
+      <div class="figure-grid">
+        <figure>
+          <img src="fig1.png" alt="Step 1 — 캘리브레이션 종류 선택">
+          <figcaption>Step 1 — Intrinsic / Extrinsic 캘리브레이션 종류 선택</figcaption>
+        </figure>
+        <figure>
+          <img src="fig2.png" alt="Step 2 — 센서 종류 선택">
+          <figcaption>Step 2 — 센서 종류(RGB·LWIR·LiDAR)·왜곡 모델 선택</figcaption>
+        </figure>
+        <figure>
+          <img src="fig3.png" alt="Step 3 — 타겟 보드 설정">
+          <figcaption>Step 3 — 타겟 보드(ChArUco/체커보드)·기하 파라미터 설정</figcaption>
+        </figure>
+        <figure>
+          <img src="fig4.png" alt="Step 4 — 캘리브레이션 실행 워크스페이스">
+          <figcaption>Step 4 — 캘리브레이션 실행 및 결과 검토 워크스페이스</figcaption>
+        </figure>
+      </div>
+      <p style="color:var(--muted); font-size:0.86em; text-align:center; margin-top:-6px;">GUI 기반 4단계 통합 캘리브레이션 워크플로</p>
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
@@ -121,6 +136,11 @@
         통해, 다양한 센서 조합에 대해 재사용 가능하고 검증 가능한 캘리브레이션
         워크플로를 제공한다.
       </p>
+
+      <figure style="margin:24px 0;">
+        <img src="fig5.png" alt="캘리브레이션 결과 리포트" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">캘리브레이션 결과 리포트 — 재투영 RMS·평균·최대 오차와 품질 등급, 추정된 K·D 행렬</figcaption>
+      </figure>
     </section>
 
   </main>

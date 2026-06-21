@@ -1006,6 +1006,34 @@ footer a:hover { color: var(--ink); }
   border-top: 1px solid var(--border);
 }
 
+/* Figure grid */
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.figure-grid figure { margin: 0; }
+
+.figure-grid img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.figure-grid figcaption {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.82em;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .figure-grid { grid-template-columns: 1fr; }
+}
+
 /* ============================================
    Responsive
    ============================================ */
