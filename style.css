@@ -953,6 +953,59 @@ footer a:hover { color: var(--ink); }
   border-radius: 4px;
 }
 
+/* Result tables */
+.result-table {
+  width: 100%;
+  max-width: 560px;
+  border-collapse: collapse;
+  margin: 14px 0 22px;
+  font-size: 13.5px;
+}
+
+.result-table caption {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.result-table th,
+.result-table td {
+  padding: 8px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink-soft);
+}
+
+.result-table thead th {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg-alt);
+}
+
+.result-table .num {
+  text-align: right;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.result-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.result-table tbody tr.total td {
+  font-weight: 600;
+  color: var(--ink);
+  border-top: 1px solid var(--border);
+}
+
 /* ============================================
    Responsive
    ============================================ */

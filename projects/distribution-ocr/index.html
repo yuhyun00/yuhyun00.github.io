@@ -53,8 +53,7 @@
       <h3>Overview</h3>
       <p>
         본 과제는 한국전력공사 전력연구원(KEPRI) 주관으로 2021년 2월부터 2023년
-        1월까지 2개년에 걸쳐 수행되었으며, 한밭대학교 최동걸 교수 연구실이 연구를
-        담당하였습니다. 전주·전선·변압기 등 옥외 배전 설비를 촬영한 점검 영상으로부터
+        1월까지 2개년에 걸쳐 수행되었습니다. 전주·전선·변압기 등 옥외 배전 설비를 촬영한 점검 영상으로부터
         배전계통의 구성정보를 자동으로 추출·검증하여, 사람이 수기로 관리하던 설비
         대장 정보의 디지털화 정확도를 높이는 것을 목표로 합니다.
       </p>
@@ -85,14 +84,8 @@
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
-        전선 Segmentation 라벨링과 OCR 라벨링 등 데이터 가공을 담당하였으며,
-        OCR 모델의 학습·최적화 및 실험을 통한 성능 개선을 수행하였습니다.
+        전선 Segmentation 라벨링과 OCR 라벨링 등 데이터 가공과 OCR 모델의 학습·최적화 및 실험을 통한 성능 개선을 수행하였습니다.
       </div>
-
-      <figure style="margin:24px 0;">
-        <img src="fig2.png" alt="전선 Semantic Segmentation 정량·정성 결과" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
-        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">전선 Semantic Segmentation — ConvNeXt-L·Swin-L 백본별 정량 지표와 전선 분할 정성 결과</figcaption>
-      </figure>
     </section>
 
     <!-- ============= TECH STACK ============= -->
@@ -116,22 +109,85 @@
     <section class="detail-section">
       <h3>Results</h3>
       <p>
-        전선 Semantic Segmentation은 ConvNeXt-L 백본 기준 mIoU 63.83%(Powerline
-        IoU 29.73, Unlabeled IoU 97.93), Swin-L 백본 기준 mIoU 60.19%를
-        기록하여, 배경이 압도적으로 많은 long-tail 환경에서도 얇은 전선을
-        안정적으로 분할함을 확인하였습니다.
+        전선 Semantic Segmentation은 ConvNeXt-L 백본 기준 mIoU 63.83%를 기록하여,
+        배경이 압도적으로 많은 long-tail 환경에서도 얇은 전선을 안정적으로 분할함을
+        확인하였습니다.
       </p>
+
+      <table class="result-table">
+        <caption>전선 Semantic Segmentation (IoU, %)</caption>
+        <thead>
+          <tr>
+            <th>Backbone</th>
+            <th class="num">Powerline</th>
+            <th class="num">Unlabeled</th>
+            <th class="num">mIoU</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ConvNeXt-L</td>
+            <td class="num">29.73</td>
+            <td class="num">97.93</td>
+            <td class="num">63.83</td>
+          </tr>
+          <tr>
+            <td>Swin-L</td>
+            <td class="num">24.43</td>
+            <td class="num">95.95</td>
+            <td class="num">60.19</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <figure style="margin:24px 0;">
+        <img src="fig2.png" alt="전선 Semantic Segmentation 데모 — 입력 영상과 전선 분할 결과" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">전선 Semantic Segmentation 데모 — 입력 영상(좌)과 전선 분할 결과(우)</figcaption>
+      </figure>
+
       <p>
         다국어 OCR은 한국어 인식 정확도 97.42%, 영어 77.6%로 평균 정확도(mAcc)
-        87.51%를 달성하였고, 변압기 Object Detection은 YOLOX 기반 모델로 mAP
-        0.75를 기록하였습니다. 세 모델 모두 실제 배전 설비 점검 영상에 대한 데모로
-        현장 적용 가능성을 검증하였습니다.
+        87.51%를 달성하였습니다.
       </p>
+
+      <table class="result-table">
+        <caption>다국어 OCR (Accuracy, %)</caption>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th class="num">Accuracy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Korean</td><td class="num">97.42</td></tr>
+          <tr><td>English</td><td class="num">77.60</td></tr>
+          <tr class="total"><td>mAcc.</td><td class="num">87.51</td></tr>
+        </tbody>
+      </table>
 
       <figure style="margin:24px 0;">
         <img src="fig3.png" alt="다국어 OCR 데모 — 전주 명판·번호 인식" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
         <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">다국어 OCR 데모 — 옥외 전주 명판의 한국어·영어 문자 인식</figcaption>
       </figure>
+
+      <p>
+        변압기 Object Detection은 YOLOX 기반 모델로 mAP 0.75를 기록하였습니다.
+        세 모델 모두 실제 배전 설비 점검 영상에 대한 데모로 현장 적용 가능성을
+        검증하였습니다.
+      </p>
+
+      <table class="result-table">
+        <caption>변압기 Object Detection</caption>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th class="num">mAP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Transformer</td><td class="num">0.75</td></tr>
+        </tbody>
+      </table>
 
       <figure style="margin:24px 0;">
         <img src="fig4.png" alt="변압기 Object Detection 데모" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
