@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,7 @@
         <li><a href="../../#publications">Publications</a></li>
         <li><a href="../../#projects">Projects</a></li>
         <li><a href="../../#awards">Awards</a></li>
+        <li><a href="../../#skills">Skills</a></li>
       </ul>
     </div>
   </nav>
@@ -53,21 +54,21 @@
       <h3>Overview</h3>
       <p>
         본 과제는 한국전력공사 전력연구원(KEPRI) 주관으로 2021년 2월부터 2023년
-        1월까지 2개년에 걸쳐 수행되었습니다. 전주·전선·변압기 등 옥외 배전 설비를 촬영한 점검 영상으로부터
+        1월까지 2개년에 걸쳐 수행되었다. 전주·전선·변압기 등 옥외 배전 설비를 촬영한 점검 영상으로부터
         배전계통의 구성정보를 자동으로 추출·검증하여, 사람이 수기로 관리하던 설비
-        대장 정보의 디지털화 정확도를 높이는 것을 목표로 합니다.
+        대장 정보의 디지털화 정확도를 높이는 것을 목표로 한다.
       </p>
       <p>
         「배전계통 구성정보 정확도 향상」이라는 목표를 전선 Semantic Segmentation,
-        다국어 OCR(전주 명판·번호 인식), 변압기 Object Detection, 그리고 전선
-        Tracking의 세부 기술로 분해하여 접근하였습니다. 야외 촬영 특성상 발생하는
+        다국어 OCR(전주 명판·번호 인식), 변압기 Object Detection의 세부 기술로
+        분해하여 접근하였다. 야외 촬영 특성상 발생하는
         다양한 촬영 도메인, 전경·배경의 극심한 클래스 불균형(long-tail), 전선처럼
-        얇은 객체 등 현장 데이터의 난점에 강인하도록 각 모델을 설계하였습니다.
+        얇은 객체 등 현장 데이터의 난점에 강인하도록 각 모델을 설계하였다.
       </p>
 
       <figure style="margin:24px 0;">
         <img src="fig1.png" alt="배전계통 구성정보 정확도 향상을 위한 세부 기술 구성도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
-        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">세부 기술 구성 — 전선 Segmentation, 다국어 OCR, 변압기 Detection, 전선 Tracking</figcaption>
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">세부 기술 구성 — 전선 Segmentation, 다국어 OCR, 변압기 Detection</figcaption>
       </figure>
     </section>
 
@@ -84,7 +85,7 @@
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
-        전선 Segmentation 라벨링과 OCR 라벨링 등 데이터 가공과 OCR 모델의 학습·최적화 및 실험을 통한 성능 개선을 수행하였습니다.
+        전선 Segmentation 라벨링과 OCR 라벨링 등 데이터 가공과 OCR 모델의 학습·최적화 및 실험을 통한 성능 개선을 수행하였다.
       </div>
     </section>
 
@@ -111,7 +112,7 @@
       <p>
         전선 Semantic Segmentation은 ConvNeXt-L 백본 기준 mIoU 63.83%를 기록하여,
         배경이 압도적으로 많은 long-tail 환경에서도 얇은 전선을 안정적으로 분할함을
-        확인하였습니다.
+        확인하였다.
       </p>
 
       <table class="result-table">
@@ -147,7 +148,7 @@
 
       <p>
         다국어 OCR은 한국어 인식 정확도 97.42%, 영어 77.6%로 평균 정확도(mAcc)
-        87.51%를 달성하였습니다.
+        87.51%를 달성하였다.
       </p>
 
       <table class="result-table">
@@ -171,9 +172,9 @@
       </figure>
 
       <p>
-        변압기 Object Detection은 YOLOX 기반 모델로 mAP 0.75를 기록하였습니다.
+        변압기 Object Detection은 YOLOX 기반 모델로 mAP 0.75를 기록하였다.
         세 모델 모두 실제 배전 설비 점검 영상에 대한 데모로 현장 적용 가능성을
-        검증하였습니다.
+        검증하였다.
       </p>
 
       <table class="result-table">
@@ -195,10 +196,9 @@
       </figure>
 
       <p>
-        후속 연구로는 분할 성능을 높이기 위한 dense prediction 모듈 개발, 전선
-        재인식(re-identification)을 위한 가상 데이터 수집·전처리 및 방법론 연구,
-        그리고 시간 축 정보를 활용한 전선 추적(Tracking) 성능 향상 기법을
-        과제로 제시하였습니다.
+        후속 연구로는 분할 성능을 높이기 위한 dense prediction 모듈 개발과, 전선
+        재인식(re-identification)을 위한 가상 데이터 수집·전처리 및 방법론 연구를
+        과제로 제시하였다.
       </p>
     </section>
 

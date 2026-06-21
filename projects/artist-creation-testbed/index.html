@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,7 @@
         <li><a href="../../#publications">Publications</a></li>
         <li><a href="../../#projects">Projects</a></li>
         <li><a href="../../#awards">Awards</a></li>
+        <li><a href="../../#skills">Skills</a></li>
       </ul>
     </div>
   </nav>
@@ -59,8 +60,7 @@
         모델로는 예술적 뉘앙스를 깊이 있게 평가하기 어렵다. 이를 해결하기 위해 작가별 도메인 특화 데이터베이스를 구축하고,
         RAG(Retrieval-Augmented Generation)로 아티스트의 예술 철학에 근거한 심층 피드백을 생성하며, Visual Grounding으로
         텍스트 피드백과 이미지 내 교정 영역을 정밀하게 연동한다. 전체 흐름은 이질적 AI 모듈을 중앙에서 제어하는
-        MCP(Multi-Modal Control Plane) 아키텍처로 통합되어, 사용자가 직관적으로 이해하고 수정할 수 있는 실질적 가이드를 제공한다.
-        본 과제는 ETRI 수요에 따라 한밭대학교 산학협력단이 수행하였다.
+        MCP(Model Context Protocol) 아키텍처로 통합되어, 사용자가 직관적으로 이해하고 수정할 수 있는 실질적 가이드를 제공한다.
       </p>
 
       <figure style="margin:24px 0;">
@@ -110,7 +110,7 @@
       <div class="tech-tags">
         <span class="tag">RAG</span>
         <span class="tag">Visual Grounding</span>
-        <span class="tag">MCP (Multi-Modal Control Plane)</span>
+        <span class="tag">MCP (Model Context Protocol)</span>
         <span class="tag">Vision-LLM (Qwen2.5-VL)</span>
         <span class="tag">LLM</span>
         <span class="tag">CLIP</span>
@@ -126,7 +126,7 @@
     <section class="detail-section">
       <h3>Results</h3>
       <p>
-        김홍도·신윤복·정선 작품을 포함한 자체 구축 코퍼스와 ETRI 전달 데이터를 기반으로 통합 피드백 시스템을 구현하였다.
+        김홍도·신윤복 작품을 포함한 자체 구축 코퍼스와 ETRI 전달 데이터를 기반으로 통합 피드백 시스템을 구현하였다.
         전년도 시스템의 문제점(하나의 피드백에 여러 평가 축 혼재, 자유 서술형 출력으로 인한 후속 처리 곤란, 객체-피드백 연결 정보 미반영)을
         개선하여, 6법 각각을 독립 평가 항목으로 분리하고 점수 기반 우선순위를 부여하도록 출력 구조를 정형화하였다.
       </p>

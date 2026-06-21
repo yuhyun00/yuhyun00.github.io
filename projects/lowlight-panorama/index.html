@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,7 @@
         <li><a href="../../#publications">Publications</a></li>
         <li><a href="../../#projects">Projects</a></li>
         <li><a href="../../#awards">Awards</a></li>
+        <li><a href="../../#skills">Skills</a></li>
       </ul>
     </div>
   </nav>
@@ -72,7 +73,7 @@
         <li>스테레오 캘리브레이션: ChArUco 기반 다중 카메라 내/외부 파라미터를 정밀 추정(재투영 오차 0.5px 이내)하고, 인접 카메라 간 화각 오버랩을 고려한 배치를 검증하여 파노라마 합성을 위한 정합 정확도 확보</li>
         <li>파노라마 생성: 캘리브레이션으로 산출한 경계선(seam)을 기준으로 다중 영상을 워핑·매핑해 스티칭 맵을 구성하고, Jetson 온보드에서 미리 구한 경계선 값으로 정합하는 방식으로 최적화하여 실시간 파노라마 생성</li>
         <li>저조도 온보드 처리: 저조도 환경에 특화된 영상 처리 알고리즘을 적용하고, grid_sample·lerp 다중 연산을 단일 융합 CUDA 커널로 통합해 Jetson Nano Orin 온보드에서 실시간 동작하도록 최적화</li>
-        <li>GPU 활용으로 처리 속도를 개선하고 파노라마 이음새를 보정하였으며, RTK 적용으로 0.0Xm급 GPS 정확도를 확보</li>
+        <li>GPU 활용으로 처리 속도를 개선하고 파노라마 이음새를 보정하였으며, RTK 적용으로 수 cm급 GPS 정확도를 확보</li>
       </ul>
 
       <figure style="margin:24px 0;">
@@ -111,7 +112,7 @@
         9.1MP(4K)·273° 화각의 센서팩에서 grid_sample·lerp 등 8개 CUDA 연산을 단일
         융합 커널로 통합해 Jetson Nano Orin 온보드에서 15FPS 실시간 파노라마
         합성을 달성하였다. 스테레오 캘리브레이션의 재투영 오차는 0.5px 이내였으며,
-        RTK를 적용해 0.0Xm급 GPS 정확도를 확보하였다. 향후 보드 업그레이드 시
+        RTK를 적용해 수 cm급 GPS 정확도를 확보하였다. 향후 보드 업그레이드 시
         고정 경계선 대신 실시간 seam 매칭 알고리즘을 적용하면 더 자연스러운
         스티칭이 가능할 것으로 기대된다.
       </p>

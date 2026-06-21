@@ -6,7 +6,7 @@
   var el = document.getElementById('site-footer');
   if (!el) return;
 
-  var UPDATED = 'May 2026';
+  var UPDATED = 'June 2026';
   var home = el.getAttribute('data-home') || '';
 
   var left = el.hasAttribute('data-copyright')

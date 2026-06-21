@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,7 @@
         <li><a href="../../#publications">Publications</a></li>
         <li><a href="../../#projects">Projects</a></li>
         <li><a href="../../#awards">Awards</a></li>
+        <li><a href="../../#skills">Skills</a></li>
       </ul>
     </div>
   </nav>
@@ -50,7 +51,7 @@
       <h3>Overview</h3>
       <p>
         본 과업은 자율협력형 무인선의 자율운항을 위해 영상 내에서 움직이는 선박의 진행(선수) 방향을 추정하는 모델 개발을 목표로 한다.
-        수요기관인 한국해양과학기술원 부설 선박해양플랜트연구소(KRISO)의 무인선 상황 인식 요구에 대응하여, Python 기반의 선박 탐지 및 선수 방향 추정 모델을 개발하였다.
+        한국해양과학기술원 부설 선박해양플랜트연구소(KRISO)의 무인선 상황 인식 요구에 대응하여, Python 기반의 선박 탐지 및 선수 방향 추정 모델을 개발하였다.
       </p>
       <p>
         과업의 상세 범위는 (1) 움직이는 선박의 탐지·선수 방향 추정을 위한 데이터 구조 및 라벨링 정의, (2) 선수 방향 학습을 위한 Classification 네트워크 정의(CNN 및 Transformer 기반), (3) 방향 클래스별 확률값 기반의 최종 출력 정의,
@@ -124,11 +125,11 @@
     <section class="detail-section">
       <h3>Results</h3>
       <p>
-        <strong>선박 탐지</strong> — MotionBlur 등 다양한 Augmentation과 Hyper-parameter search를 통한 추가 실험으로 데이터셋 일부를 테스트셋으로 사용하여 최종 <strong>77.35%</strong>의 성능을 달성하였다.
+        <strong>선박 탐지</strong> — MotionBlur 등 다양한 Augmentation과 Hyper-parameter search를 통한 추가 실험으로 데이터셋 일부를 테스트셋으로 사용하여 최종 <strong>mAP 77.35%</strong>의 성능을 달성하였다.
       </p>
       <p>
-        <strong>선수 방향 추정</strong> — 특정 방향(1번·5번) 이미지의 부족으로 인한 Class imbalance와 중복 이미지로 인한 Unique image 부족(다양성 정렬 시 약 93% 제거)으로 정확도가 제한되었다.
-        CNN 기반 모델의 기본 성능은 30~35% 수준이었으며, Augmentation·Focal Loss·Label Smoothing 등을 적용하여 약 <strong>44%</strong>까지 향상시켰다.
+        <strong>선수 방향 추정</strong> — 특정 방향(1번·5번) 이미지의 부족으로 인한 Class imbalance와 중복 이미지로 인한 Unique image 부족(다양성 기준 중복 제거 시 약 93%가 제거됨)으로 정확도가 제한되었다.
+        CNN 기반 모델의 기본 분류 정확도(Accuracy)는 30~35% 수준이었으며, Augmentation·Focal Loss·Label Smoothing 등을 적용하여 약 <strong>44%</strong>까지 향상시켰다.
       </p>
       <figure style="margin:24px 0;">
         <img src="fig5.jpg" alt="SEResNet 기반 선박 선수 방향 추정 정성적 결과" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">

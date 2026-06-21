@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>용접로봇행동생성 데이터 — Yuhyun Kim</title>
+  <title>용접 로봇 행동 생성 데이터 — Yuhyun Kim</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,10 +19,11 @@
       <a href="../../" class="nav-name">Yuhyun Kim</a>
       <ul class="nav-links">
         <li><a href="../../#about">About</a></li>
+        <li><a href="../../#experience">Experience</a></li>
         <li><a href="../../#publications">Publications</a></li>
         <li><a href="../../#projects">Projects</a></li>
         <li><a href="../../#awards">Awards</a></li>
-        <li><a href="../../#experience">Experience</a></li>
+        <li><a href="../../#skills">Skills</a></li>
       </ul>
     </div>
   </nav>
@@ -38,7 +39,7 @@
         <span>한국지능정보사회진흥원 (NIA)</span>
       </div>
 
-      <h1 class="detail-title">용접로봇행동생성 데이터</h1>
+      <h1 class="detail-title">용접 로봇 행동 생성 데이터</h1>
 
       <p class="detail-subtitle">
         상용 협동로봇과 RGB-D 카메라로 다양한 용접 조건의 모재를 촬영하여
@@ -52,20 +53,18 @@
     <section class="detail-section">
       <h3>Overview</h3>
       <p>
-        본 과제는 한국지능정보사회진흥원(NIA) 주관 「2025년도 초거대AI 확산
+        본 과제는 한국지능정보사회진흥원(NIA) 「2025년도 초거대AI 확산
         생태계 조성 사업(3차)」의 일환으로, 용접 작업 대상 모재를 여러 방향에서
         촬영한 RGB-D 데이터와 로봇 구동 정보를 결합하여 용접 로봇의 행동 생성을
-        학습할 수 있는 멀티모달 데이터셋을 구축하는 데이터 구축 사업입니다.
-        주관기관 흥일기업(주), 참여기관 국립한밭대학교 산학협력단으로 구성된
-        컨소시엄이 수행하였습니다.
+        학습할 수 있는 멀티모달 데이터셋을 구축하는 데이터 구축 사업이다.
       </p>
       <p>
         조선·중공업 등 제조 현장의 고령화와 용접 인력난, 그리고 위험 공정에서의
         산업재해 예방 수요가 커지는 가운데, 작업 조건과 형상이 수시로 달라지는
         용접 공정의 현장 데이터를 정형화하는 것이 지능형 자동화의 핵심 과제로
-        대두되었습니다. 본 과제는 비정형 용접 구간과 로봇 작업 정보를 체계적으로
+        대두되었다. 본 과제는 비정형 용접 구간과 로봇 작업 정보를 체계적으로
         데이터화하여 숙련 의존 공정을 표준화하고, 자율 용접 행동 생성·최적화 등
-        후속 기술개발을 위한 학습·검증용 자원을 제공하는 것을 목표로 합니다.
+        후속 기술개발을 위한 학습·검증용 자원을 제공하는 것을 목표로 한다.
       </p>
 
       <figure style="margin:24px 0;">
@@ -90,7 +89,7 @@
         <span class="aside-label">Role</span>
         데이터 구축 파이프라인(RGB-D 수집·PCD 정합·정제)과 2D/3D 라벨링 가공,
         그리고 YOLOv12·PointNeXt 기반 AI 유효성 검증 실험을 포함하는 연구
-        수행 및 알고리즘 개발에 참여하였습니다.
+        수행 및 알고리즘 개발에 참여하였다.
       </div>
 
       <figure style="margin:24px 0;">
@@ -127,17 +126,16 @@
         총 1,500개 모재를 9방향 촬영하여 RGB-D 원천데이터 13,509건(RGB·Depth
         각 13,509장), PCD 정합 데이터 1,501건, 가용접·본용접 2D 라벨링(JSON)
         1,501건, 3D Segmentation 라벨링(CSV) 1,501건, 모재 3D 모델링(OBJ)·로봇
-        티칭(HDF5)·수집환경 메타데이터(CSV) 각 1,501건을 구축하였습니다. 데이터
-        수집 목표 대비 111.6%(13,500건 → 15,075건), 정제 101.4%, 가공·검수 100%를
-        달성하였습니다.
+        티칭(HDF5)·수집환경 메타데이터(CSV) 각 1,501건을 구축하였다. 모든
+        데이터는 정제·가공·검수 단계를 거쳐 목표 수량과 품질 기준을 충족하였다.
       </p>
       <p>
-        AI 모델 유효성 검증에서는 목표 지표를 모두 초과 달성하였습니다.
+        AI 모델 유효성 검증에서는 목표 지표를 모두 초과 달성하였다.
         YOLOv12 기반 2D Object Detection은 가용접 지점 AP 69.7%, 본용접 구간 AP
         68.3%(목표 AP 65% 이상)를 기록하였고, PointNeXt 기반 3D Segmentation은
         IoU 69.5%(최종 검증 70%, 목표 65% 이상)와 작업 경로 RMSE 4.16mm(목표 5mm
-        이내)를 달성하였습니다. 라벨링 정확성도 2D Polyline·Point 98.9%, 3D
-        Segmentation 95.8%로 모든 품질지표를 충족하였습니다.
+        이내)를 달성하였다. 라벨링 정확성도 2D Polyline·Point 98.9%, 3D
+        Segmentation 95.8%로 모든 품질지표를 충족하였다.
       </p>
 
       <figure style="margin:24px 0;">
@@ -148,7 +146,7 @@
       <p>
         응용 모델로는 구축 데이터로 학습한 3D Point Cloud Segmentation 모델의
         실용성을 검증하고, PyBullet 기반 용접 시뮬레이션을 통해 로봇 자세 추출과
-        작업 경로(Trajectory) 생성 서비스 모델을 구성하였습니다.
+        작업 경로(Trajectory) 생성 서비스 모델을 구성하였다.
       </p>
     </section>
 

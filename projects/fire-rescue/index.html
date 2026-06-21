@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,7 @@
         <li><a href="../../#publications">Publications</a></li>
         <li><a href="../../#projects">Projects</a></li>
         <li><a href="../../#awards">Awards</a></li>
+        <li><a href="../../#skills">Skills</a></li>
       </ul>
     </div>
   </nav>
@@ -50,7 +51,7 @@
       <h3>Overview</h3>
       <p>
         본 과제는 국토교통부 「대심도 장대터널(GTX 등) 재난 대응 복합훈련장 개발 사업」의 핵심분야로,
-        한국철도기술연구원이 주관하고 한국기계연구원(KIMM)이 <strong>「화재 및 요구조자 인지기술 개발」</strong> 세부([1-1])를
+        한국철도기술연구원이 주관하고 한국기계연구원(KIMM)이 <strong>「화재 및 요구조자 인지기술 개발」</strong> 세부 과제를
         담당한다. 지하 깊은 곳에 위치한 대심도 철도시설은 화재·연기·정전 등 재난 발생 시 대피와 구조가 매우 어렵기 때문에,
         재난 상황에서 이용자의 위치·상태·특성을 실시간으로 파악해 신속한 구조를 지원하는 요구조자 인지 기술이 필수적이다.
         특히 연기·암전·객체 가려짐처럼 영상 조건이 극도로 열악한 환경에서도 안정적으로 사람을 탐지하는 것을 목표로 한다.
@@ -115,9 +116,9 @@
       <ul>
         <li><strong>화재(불꽃/연기) 인지</strong> — 화재·연기 통합 데이터셋으로 YOLO 계열 모델을 학습, 전체 mAP50 0.908(화재 0.921, 연기 0.895)로 목표 0.85 초과 달성.</li>
         <li><strong>저조도 사람 탐지</strong> — ExDark 데이터셋에서 mAP50 0.889 달성, 기존 EMV-YOLO(0.782) 대비 약 13.68% 향상.</li>
-        <li><strong>In/Out 인원 카운팅</strong> — 6개 테스트 영상에서 100% Accuracy 달성(기존 연구 91% 대비 9%p 향상, 목표 60% 초과).</li>
-        <li><strong>요구조자 상태 인식</strong> — AI-Hub 「지하철 역사 내 CCTV 이상행동 영상」 기반 실신·전도·배회 3종 분류에서 94.7% Accuracy 달성(목표 mAP50 0.75 이상).</li>
-        <li><strong>거리 추정</strong> — SAM + DepthPro 결합으로 전체 거리 MAE 0.484m, 최종 성능 0.9708m 확보(5m 0.049m ~ 25m 0.872m).</li>
+        <li><strong>In/Out 인원 카운팅</strong> — 5분 이상 길이의 6개 영상에서 누적 오차 없이 100% Accuracy 달성(기존 연구 91% 대비 9%p 향상, 목표 60% 초과).</li>
+        <li><strong>요구조자 상태 인식</strong> — AI-Hub 「지하철 역사 내 CCTV 이상행동 영상」 기반 실신·전도·배회 3종 인식에서 mAP50 0.947 달성(목표 0.75 이상).</li>
+        <li><strong>거리 추정</strong> — SAM + DepthPro 결합으로 전체 평균 거리 MAE 0.484m(구간별 5m 0.049m ~ 25m 0.872m)를 달성.</li>
       </ul>
       <figure style="margin:24px 0;">
         <img src="fig2.png" alt="YOLOv12 연기·화재 탐지 결과" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
