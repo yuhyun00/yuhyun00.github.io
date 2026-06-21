@@ -82,13 +82,13 @@
         크레인 3호기·4호기에 설치한 다중 센서로부터 LiDAR–카메라 데이터를 취득한다. 센서 해상도는 LiDAR 2048 × 128 @ 10Hz, Camera 1920 × 1200 @ 30fps이며, LiDAR–카메라 캘리브레이션을 통해 카메라 이미지와 LiDAR projection 이미지를 정합하여 활용한다.
       </p>
       <figure style="margin:24px 0;">
-        <img src="fig1.png" alt="크레인 다중센서 설치 현황 및 하드웨어 구성도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
-        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">크레인 다중센서 설치 현황(3호기·4호기) 및 하드웨어 구성도</figcaption>
+        <img src="fig1.png" alt="크레인 다중센서 현장 설치 모습" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">크레인 캐빈측 그라브에 설치한 다중센서(카메라·LiDAR) 현장 설치 모습</figcaption>
       </figure>
 
       <figure style="margin:24px 0;">
-        <img src="fig2.png" alt="Camera 이미지 / LiDAR projection 이미지 및 측정지점" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
-        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">Camera 이미지 / LiDAR projection 이미지 및 철판 길이·너비 방향 측정지점(L1–L4)</figcaption>
+        <img src="fig2.png" alt="다중센서 데이터 시각화 — LiDAR 포인트 클라우드와 카메라·projection 영상" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">다중센서 데이터 시각화 — LiDAR 포인트 클라우드와 카메라·LiDAR projection 영상</figcaption>
       </figure>
     </section>
 
@@ -108,13 +108,13 @@
         <span class="tag">Python</span>
       </div>
       <figure style="margin:24px 0;">
-        <img src="fig3.png" alt="측정 파이프라인 개요 및 시스템 아키텍처 구성도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
-        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">측정 파이프라인 개요(철판·포트 탐지 → 전처리 → LiDAR 거리 측정) 및 시스템 아키텍처 구성도</figcaption>
+        <img src="fig3.png" alt="철판·크레인 바운더리 인식과 중심선 각도·거리 가시화" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">철판·크레인 바운더리 인식과 크레인·철판 중심선 간 각도, 크레인–철판 거리 가시화</figcaption>
       </figure>
 
       <figure style="margin:24px 0;">
-        <img src="fig4.png" alt="SAM 기반 세그멘테이션 및 노이즈 제거 전·후 비교" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
-        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">SAM 기반 세그멘테이션 및 노이즈 제거 전·후 측정 정밀도 비교</figcaption>
+        <img src="fig4.png" alt="세그멘테이션 기반 철판 거리·정렬 각도 측정 결과" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">세그멘테이션으로 분할한 철판에 대한 거리(0.918m)·정렬 각도(id별) 측정 결과</figcaption>
       </figure>
     </section>
 
@@ -131,8 +131,8 @@
         또한 다중센서 시스템의 측정 결과가 FTP 서버 업로드를 통해 Main system에 정상 적용됨을 현장에서 확인하였다.
       </p>
       <figure style="margin:24px 0;">
-        <img src="fig5.png" alt="거리 측정 결과 및 시스템 동작 화면" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
-        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">거리 측정 결과(실측 vs 계측, L1–L4) 및 시스템 동작 화면·로그</figcaption>
+        <img src="fig5.png" alt="현장 거리 측정 결과 실측 검증" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">현장 거리 측정 결과 — 실측 수치(0.415m 등)로 계측값 검증</figcaption>
       </figure>
     </section>
 
