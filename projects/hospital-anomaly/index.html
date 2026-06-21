@@ -56,25 +56,27 @@
     <section class="detail-section">
       <h3>Approach</h3>
       <ul>
-        <li>대규모 RGB 사전학습과 소규모 RGB-Depth 쌍만으로 Depth 인식 성능을 끌어올리는 cross-modal knowledge distillation 방법론 설계</li>
-        <li>I3D 백본으로 RGB와 Depth 각각의 영상 특징을 추출해 정렬하고, 두 모달리티를 섞은 표현까지 함께 학습하여 단일·다중 모달 모두에서 일관된 분류 성능을 확보</li>
-        <li>추론 시 RGB·Depth·RGB-Depth 중 어떤 입력이 들어와도 동작하도록 설계 (missing modality 대응)</li>
-        <li>대규모 RGB 데이터셋(Kinetics 400)과 RGB+D 데이터셋(Toyota Smarthome)을 활용한 학습·평가</li>
+        <li>문맥 정보가 풍부한 대규모 RGB 사전학습 모델의 지식을 프라이버시 안전한 Depth 모델로 이전하는 cross-modality distillation을 탐구하고, 그중 RGB·Depth 특징을 선형 결합해 상호 보완하는 <strong>cross-modal mixing distillation</strong>을 제안</li>
+        <li>공유 백본으로 RGB·Depth 특징을 추출하고 depth:RGB = 7:3 비율로 선형 결합한 mixed feature까지 공유 head에 통과시켜 RGB·Depth·mixed 3개 logit을 생성하고, 각 logit을 cross-entropy로 학습</li>
+        <li>모달리티 특징을 정렬하는 consistency loss와 통합 feature 기반 logit으로 지식을 교환하는 distillation loss(MSE)를 결합해, 단일·다중 모달 어떤 입력에서도 일관된 성능을 확보</li>
+        <li>추론 시 Depth 단일 모달만으로도 동작하여 개인정보를 보호하면서 센서·연산 비용을 절감 (RGB·Depth·다중 모달 입력 모두 지원)</li>
+        <li>비교 방법으로 naive distillation과 body pose-aware distillation(키포인트로 전경·배경을 구분해 배경을 Gaussian blur 처리한 teacher → Depth student로 증류)을 함께 탐구</li>
+        <li>I3D·TimeSformer·Video Swin Transformer 백본(Kinetics-400 사전학습)으로 Toyota Smarthome·NTU RGB+D 120에서 학습·평가</li>
       </ul>
 
       <figure style="margin:24px 0;">
-        <img src="fig1.png" alt="학습 단계 cross-modal distillation 구조도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
-        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">학습 단계 구조도: 두 모달리티 특징 추출과 cross-modal distillation, Local Attentive Fusion 기반 학습 구성</figcaption>
+        <img src="fig1.png" alt="Cross-modal mixing distillation 프레임워크" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">제안한 Cross-modal mixing distillation — 공유 백본으로 추출한 RGB·Depth 특징을 선형 결합해 RGB·Depth·mixed 3개 logit을 생성하고, consistency loss·distillation loss로 모달리티 간 정보를 교환</figcaption>
       </figure>
 
       <figure style="margin:24px 0;">
-        <img src="fig2.png" alt="추론 단계 구조도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
-        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">추론 단계 구조도: 단일·다중 모달 어떤 입력이든 추론 가능한 모델 구성</figcaption>
+        <img src="fig2.png" alt="Body pose-aware distillation 프레임워크" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">비교 방법으로 탐구한 Body pose-aware distillation — 키포인트로 전경·배경을 나눠 배경을 blur 처리한 frozen teacher에서 Depth student로 지식 증류</figcaption>
       </figure>
 
       <div class="detail-aside">
         <span class="aside-label">Role</span>
-        Mixup distillation 기반 cross-modal 행동 인식 모델 설계 및 학습, Toyota Smarthome / Kinetics 400 데이터셋 실험 및 정량 평가 수행.
+        Cross-modal mixing distillation 기반 행동 인식 모델 설계 및 학습, Toyota Smarthome·NTU RGB+D 120 데이터셋 실험 및 정량 평가 수행.
       </div>
     </section>
 
@@ -83,25 +85,78 @@
       <h3>Methods &amp; Tech</h3>
       <div class="tech-tags">
         <span class="tag">Action Recognition</span>
-        <span class="tag">Cross-Modal Distillation</span>
+        <span class="tag">Privacy-Safe</span>
+        <span class="tag">Cross-Modality Distillation</span>
+        <span class="tag">Cross-Modal Mixing Distillation</span>
         <span class="tag">Multi-Modal (RGB-Depth)</span>
-        <span class="tag">Missing Modality</span>
+        <span class="tag">Knowledge Distillation</span>
         <span class="tag">I3D</span>
         <span class="tag">TimeSformer</span>
-        <span class="tag">Kinetics 400</span>
+        <span class="tag">Video Swin Transformer</span>
+        <span class="tag">Kinetics-400</span>
         <span class="tag">Toyota Smarthome</span>
-        <span class="tag">Mixup Distillation</span>
+        <span class="tag">NTU RGB+D 120</span>
       </div>
     </section>
 
     <!-- ============= RESULTS ============= -->
     <section class="detail-section">
       <h3>Results</h3>
-      <p>Toyota Smarthome 데이터셋(I3D 기반)에서 제안한 Mixup distillation 방법은 Depth scratch 대비 CS 74.43%(+3.39), CV1 53.46%(+15.35), CV2 61.09%(+9.66)를 기록했다. baseline 대비 여러 뷰 태스크 평균 9% 이상 성능을 향상시켰으며, RGB·Depth·multi-modal 어떤 입력에도 강인한 성능을 보였다.</p>
+      <p>
+        I3D 기반 Toyota Smarthome에서 제안한 cross-modal mixing distillation은
+        Depth 단일 추론만으로 CS 74.43%, CV1 53.46%, CV2 61.09%를 달성하여
+        Depth scratch·Depth fine-tune은 물론 naive·body pose-aware distillation
+        보다도 높은 성능을 보였습니다. 특히 시점 변화가 큰 CV1에서 Depth scratch
+        대비 +15.35%p의 큰 향상을 기록하였습니다.
+      </p>
 
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;Toyota Smarthome 정량 결과 표: CS/CV1/CV2 정확도 비교&gt; <span style="opacity:.7">(출처: 충대병원_행동인식.pptx.txt)</span></p>
+      <table class="result-table" style="max-width:640px;">
+        <caption>I3D · Toyota Smarthome (Accuracy, %)</caption>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Inference</th>
+            <th class="num">CS</th>
+            <th class="num">CV1</th>
+            <th class="num">CV2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>RGB fine-tune</td><td>RGB</td><td class="num">76.76</td><td class="num">48.52</td><td class="num">62.73</td></tr>
+          <tr><td>Depth scratch</td><td>Depth</td><td class="num">71.04</td><td class="num">38.11</td><td class="num">51.43</td></tr>
+          <tr><td>Depth fine-tune</td><td>Depth</td><td class="num">73.46</td><td class="num">46.36</td><td class="num">56.43</td></tr>
+          <tr><td>Naive distillation</td><td>Depth</td><td class="num">72.80</td><td class="num">41.13</td><td class="num">52.43</td></tr>
+          <tr><td>Body pose-aware distillation</td><td>Depth</td><td class="num">73.76</td><td class="num">46.73</td><td class="num">59.14</td></tr>
+          <tr class="total"><td>Cross-modal mixing distillation (Ours)</td><td>Depth</td><td class="num">74.43</td><td class="num">53.46</td><td class="num">61.09</td></tr>
+        </tbody>
+      </table>
 
-      <p>연구 결과는 IEEE Access(IF 3.476) 투고를 목표로 정리되었으며, I3D 외 다른 SOTA 모델로의 확장 적용을 향후 과제로 두었다.</p>
+      <figure style="margin:24px 0;">
+        <img src="fig3.png" alt="Toyota Smarthome 클래스별 정확도 비교" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">클래스별 정확도 비교 (Toyota Smarthome, CV1) — Depth scratch·Depth fine-tune 대비 제안 방법(Ours Depth)이 다수 행동에서 큰 향상</figcaption>
+      </figure>
+
+      <p>
+        백본을 TimeSformer·Video Swin Transformer로 바꿔도 동일한 경향이
+        나타났으며, 특히 NTU RGB+D 120 cross-setup에서 Depth scratch 대비
+        TimeSformer 11.84% → 79.54%, Video Swin Transformer 39.47% → 84.10%로
+        큰 폭의 향상을 보여 두 Depth 기반 벤치마크에서 SOTA 정확도를
+        달성하였습니다. 특징맵 시각화에서도 제안 방법이 배경이 아닌 전경(사람)에
+        집중하여, Depth scratch가 'Walk'로 오분류한 샘플을 'SitDown'으로
+        올바르게 예측함을 확인할 수 있습니다.
+      </p>
+
+      <figure style="margin:24px 0;">
+        <img src="fig4.png" alt="I3D 백본 마지막 특징맵 시각화" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">I3D 마지막 특징맵 시각화 — (a) RGB 입력, (b) Depth 입력, (c) RGB fine-tune, (d) Depth scratch, (e) 제안한 cross-modal mixing distillation(Depth 단일 추론)</figcaption>
+      </figure>
+
+      <p>
+        본 연구 결과는 <a href="https://ieeexplore.ieee.org/document/10604858" target="_blank" rel="noopener">「Privacy-Safe Action Recognition via Cross-Modality Distillation」</a>
+        논문으로 정리되어 <strong>IEEE Access</strong>(IF 3.6, 2024)에 게재되었으며,
+        본인은 공동 제1저자(co-first author)로 참여하였습니다. 향후 과제로는 더
+        다양한 센서 환경과 상황에 대응할 수 있는 모델 연구를 제시하였습니다.
+      </p>
     </section>
 
   </main>
