@@ -81,8 +81,15 @@
       <p>
         크레인 3호기·4호기에 설치한 다중 센서로부터 LiDAR–카메라 데이터를 취득한다. 센서 해상도는 LiDAR 2048 × 128 @ 10Hz, Camera 1920 × 1200 @ 30fps이며, LiDAR–카메라 캘리브레이션을 통해 카메라 이미지와 LiDAR projection 이미지를 정합하여 활용한다.
       </p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;크레인 다중센서 설치 현황(3호기·4호기) 및 하드웨어 구성도&gt; <span style="opacity:.7">(출처: 현대제철 크레인자동화 시스템 소개자료)</span></p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;Camera 이미지 / LiDAR projection 이미지 및 철판 길이·너비 방향 측정지점(L1–L4)&gt; <span style="opacity:.7">(출처: 현대제철 크레인자동화 시스템 소개자료)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig1.png" alt="크레인 다중센서 설치 현황 및 하드웨어 구성도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">크레인 다중센서 설치 현황(3호기·4호기) 및 하드웨어 구성도</figcaption>
+      </figure>
+
+      <figure style="margin:24px 0;">
+        <img src="fig2.png" alt="Camera 이미지 / LiDAR projection 이미지 및 측정지점" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">Camera 이미지 / LiDAR projection 이미지 및 철판 길이·너비 방향 측정지점(L1–L4)</figcaption>
+      </figure>
     </section>
 
     <!-- ============= METHODS & TECH ============= -->
@@ -100,8 +107,15 @@
         <span class="tag">Edge AI</span>
         <span class="tag">Python</span>
       </div>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;측정 파이프라인 개요(철판·포트 탐지 → 전처리 → LiDAR 거리 측정) 및 시스템 아키텍처 구성도&gt; <span style="opacity:.7">(출처: 현대제철 크레인자동화 시스템 소개자료)</span></p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;SAM 기반 세그멘테이션 및 노이즈 제거 전·후 측정 정밀도 비교&gt; <span style="opacity:.7">(출처: 현대제철 크레인자동화 시스템 소개자료)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig3.png" alt="측정 파이프라인 개요 및 시스템 아키텍처 구성도" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">측정 파이프라인 개요(철판·포트 탐지 → 전처리 → LiDAR 거리 측정) 및 시스템 아키텍처 구성도</figcaption>
+      </figure>
+
+      <figure style="margin:24px 0;">
+        <img src="fig4.png" alt="SAM 기반 세그멘테이션 및 노이즈 제거 전·후 비교" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">SAM 기반 세그멘테이션 및 노이즈 제거 전·후 측정 정밀도 비교</figcaption>
+      </figure>
     </section>
 
     <!-- ============= RESULTS ============= -->
@@ -116,7 +130,10 @@
         대부분의 측정점은 0–22mm 수준의 오차를 보였으며 최대 오차도 약 41mm로 목표 범위 내에 있었다.
         또한 다중센서 시스템의 측정 결과가 FTP 서버 업로드를 통해 Main system에 정상 적용됨을 현장에서 확인하였다.
       </p>
-      <p class="photo-note" style="margin:18px 0; padding:14px 16px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:0.92em;">📷 <strong>사진 위치</strong> — &lt;거리 측정 결과(실측 vs 계측, L1–L4) 및 시스템 동작 화면·로그&gt; <span style="opacity:.7">(출처: 현대제철 크레인자동화 시스템 소개자료)</span></p>
+      <figure style="margin:24px 0;">
+        <img src="fig5.png" alt="거리 측정 결과 및 시스템 동작 화면" style="width:100%; border-radius:8px; border:1px solid #E2E8F0; display:block;">
+        <figcaption style="margin-top:8px; color:var(--muted); font-size:0.86em; text-align:center;">거리 측정 결과(실측 vs 계측, L1–L4) 및 시스템 동작 화면·로그</figcaption>
+      </figure>
     </section>
 
   </main>
